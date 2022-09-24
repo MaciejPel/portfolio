@@ -1,25 +1,22 @@
-/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 import { en, pl, languageOptions } from '../utils/translation';
+import { navigation } from '../utils/constants';
 import {
 	LanguageIcon,
 	ChevronDownIcon,
+	ChevronRightIcon,
 	SwatchIcon,
 	SunIcon,
 	MoonIcon,
 } from '@heroicons/react/24/solid';
+import Image from 'next/image';
 
 const themes = [
 	{ name: 'light', icon: <SunIcon className="w-5" /> },
 	{ name: 'dark', icon: <MoonIcon className="w-5" /> },
-];
-
-const navigation = [
-	{ name: 'home', url: '/' },
-	{ name: 'projects', url: '/projects' },
 ];
 
 const Header: React.FC = () => {
@@ -32,55 +29,65 @@ const Header: React.FC = () => {
 
 	const [dropdown, setDropdown] = useState({ language: false, theme: false });
 
+	// useEffect(() => {
 	// const handleResize = () => {
 	// 	window.scrollY >= 90 ? setScrolled(true) : setScrolled(false);
 	// };
-
-	// useEffect(() => {
 	// 	window.addEventListener('scroll', handleResize);
 	// 	return () => {
 	// 		window.removeEventListener('scroll', handleResize);
 	// 	};
 	// }, []);
 
+	useEffect(() => {
+		const closeSelector = (e: Event) => {
+			const target = e.target as Element;
+			if (!target.closest('.dropdown')) setDropdown({ language: false, theme: false });
+		};
+		window.addEventListener('click', closeSelector);
+		return () => {
+			window.removeEventListener('click', closeSelector);
+		};
+	}, [dropdown]);
+
 	useEffect(() => setMounted(true), []);
 	if (!mounted) return null;
 
 	return (
 		<header
-			className={`sticky top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur  text-gray-500 dark:text-gray-400 bg-slate-100 dark:bg-slate-900 ${
+			className={`sticky top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur animate-slide ${
 				scrolled ? '' : ''
 			}`}
 		>
 			<nav className="flex items-center p-2 min-h-[4rem] w-full ">
-				<div className="flex flex-0 sm:gap-8 gap-2 max-w-7xl mx-auto w-full sm:justify-end justify-around items-center">
+				<div className="flex flex-0 sm:gap-6 gap-2 max-w-7xl mx-auto w-full sm:justify-end justify-around items-center">
 					{navigation.map((item, index) => (
 						<Link
 							href={item.url}
 							key={index}
 						>
-							<a className=" hover:text-black dark:hover:text-white hover:underline transition-colors">
-								{t.menu[item.name as keyof typeof t.menu]}
+							<a
+								className={`menu-item hover:text-black dark:hover:text-white transition-colors font-medium flex ${
+									asPath === item.url ? 'active text-black dark:text-white' : ''
+								}`}
+							>
+								{t.menu[item.name as keyof typeof t.menu].toUpperCase()}
 							</a>
 						</Link>
 					))}
 					<div className="flex gap-1">
-						<div className="relative inline-block">
+						<div className="dropdown relative inline-block">
 							<div
-								className="gap-1 hover:bg-slate-200 rounded inline-flex cursor-pointer select-none items-center justify-center hover:text-black h-8 px-2 transition-colors"
-								tabIndex={0}
-								// onClick={() =>
-								// 	setDropdown({ ...dropdown, language: !dropdown.language, theme: false })
-								// }
+								className="gap-1 hover:bg-blue-600 hover:text-white rounded inline-flex cursor-pointer select-none items-center justify-center h-8 px-2 transition-colors"
+								onClick={() =>
+									setDropdown({ ...dropdown, language: !dropdown.language, theme: false })
+								}
 							>
 								<LanguageIcon className="w-5" />
 								<ChevronDownIcon className="w-3" />
 							</div>
 							{dropdown.language && (
-								<div
-									className="absolute mt-2 right-0 w-36 rounded-lg dark:bg-slate-800 bg-slate-100"
-									tabIndex={0}
-								>
+								<div className="absolute mt-5 right-0 w-36 rounded-lg dark:bg-slate-700 bg-slate-200">
 									<ul className="flex flex-col gap-1 p-2">
 										{locales?.map((l, i) => (
 											<Link
@@ -89,21 +96,19 @@ const Header: React.FC = () => {
 												locale={l}
 											>
 												<li
-													className={`rounded-lg py-2 px-4 font-medium cursor-pointer flex gap-2 dark:hover:bg-slate-700 hover:bg-slate-200 ${
-														l === locale ? '!bg-green-400 text-white' : ''
+													className={`rounded-lg py-2 px-4 font-medium cursor-pointer flex gap-2 transition-colors dark:hover:bg-slate-600 hover:bg-slate-300 ${
+														l === locale ? '!bg-blue-600 text-white' : ''
 													}`}
 												>
-													<img
-														src={`https://flagcdn.com/192x144/${
-															languageOptions[l as keyof typeof languageOptions]
-														}.webp`}
+													<Image
+														src={languageOptions.flags[l as keyof typeof languageOptions.flags]}
 														width="32"
 														height="24"
 														alt={l}
 													/>
 													{
-														languageOptions.abbreviation[
-															l as keyof typeof languageOptions.abbreviation
+														languageOptions.abbreviations[
+															l as keyof typeof languageOptions.abbreviations
 														]
 													}
 												</li>
@@ -113,9 +118,9 @@ const Header: React.FC = () => {
 								</div>
 							)}
 						</div>
-						<div className="relative inline-block">
+						<div className="dropdown relative inline-block">
 							<div
-								className="gap-1 hover:bg-slate-200 rounded inline-flex cursor-pointer select-none items-center justify-center hover:text-black h-8 px-2 transition-colors"
+								className="gap-1 hover:bg-blue-600 hover:text-white rounded inline-flex cursor-pointer select-none items-center justify-center h-8 px-2 transition-colors"
 								onClick={() =>
 									setDropdown({ ...dropdown, theme: !dropdown.theme, language: false })
 								}
@@ -124,13 +129,13 @@ const Header: React.FC = () => {
 								<ChevronDownIcon className="w-3" />
 							</div>
 							{dropdown.theme && (
-								<div className="absolute mt-2 right-0 w-36 rounded-lg dark:bg-slate-800 bg-slate-100">
+								<div className="absolute mt-5 right-0 w-36 rounded-lg dark:bg-slate-700 bg-slate-200">
 									<ul className="flex flex-col gap-1 p-2">
 										{themes.map((theme, i) => (
 											<li
 												key={i}
-												className={`rounded-lg py-2 px-4 cursor-pointer flex gap-2 hover:bg-slate-200 dark:hover:bg-slate-700 font-medium ${
-													theme.name === currentTheme ? '!bg-green-400 text-white' : ''
+												className={`rounded-lg py-2 px-4 font-medium cursor-pointer flex gap-2 transition-colors dark:hover:bg-slate-600 hover:bg-slate-300 ${
+													theme.name === currentTheme ? '!bg-blue-600 text-white' : ''
 												}`}
 												onClick={() => setTheme(theme.name)}
 											>

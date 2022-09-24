@@ -1,3 +1,6 @@
+import plFlag from '../../public/flags/pl.png';
+import usFlag from '../../public/flags/us.png';
+
 export const pl = {
 	title: 'Witaj w Next.js!',
 	menu: {
@@ -27,7 +30,8 @@ export const en = {
 export const languageOptions = {
 	pl: 'pl',
 	en: 'us',
-	abbreviation: {
+	flags: { pl: plFlag, en: usFlag },
+	abbreviations: {
 		en: 'English',
 		pl: 'Polski',
 	},
