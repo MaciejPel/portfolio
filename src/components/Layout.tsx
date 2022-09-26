@@ -6,7 +6,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 		<>
 			<Meta />
 			<Header />
-			<main className="main flex flex-col justify-start py-2 font-medium mx-auto max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-7xl">
+			<main className="flex flex-col justify-start py-2 mt-20 font-medium md:mx-auto md:max-w-4xl xl:max-w-5xl 2xl:max-w-7xl px-8 w-full">
 				{children}
 			</main>
 		</>

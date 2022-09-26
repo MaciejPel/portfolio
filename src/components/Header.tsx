@@ -1,18 +1,14 @@
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 import { en, pl, languageOptions } from '../utils/translation';
 import { navigation } from '../utils/constants';
-import {
-	LanguageIcon,
-	ChevronDownIcon,
-	ChevronRightIcon,
-	SwatchIcon,
-	SunIcon,
-	MoonIcon,
-} from '@heroicons/react/24/solid';
-import Image from 'next/image';
+import { LanguageIcon, SwatchIcon, SunIcon, MoonIcon, Bars3Icon } from '@heroicons/react/24/solid';
+import useWindowSize from '../hooks/useWindowSize';
+import Drawer from './Drawer';
+import Dropdown from './Dropdown';
 
 const themes = [
 	{ name: 'light', icon: <SunIcon className="w-5" /> },
@@ -23,22 +19,47 @@ const Header: React.FC = () => {
 	const { locale, locales, asPath } = useRouter();
 	const t = locale === 'en' ? en : pl;
 	const { theme: currentTheme, setTheme } = useTheme();
+	const { width } = useWindowSize();
 
 	const [mounted, setMounted] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
-
+	const [drawer, setDrawer] = useState(false);
 	const [dropdown, setDropdown] = useState({ language: false, theme: false });
 
-	// useEffect(() => {
-	// const handleResize = () => {
-	// 	window.scrollY >= 90 ? setScrolled(true) : setScrolled(false);
-	// };
-	// 	window.addEventListener('scroll', handleResize);
-	// 	return () => {
-	// 		window.removeEventListener('scroll', handleResize);
-	// 	};
-	// }, []);
+	const navItems: JSX.Element[] = useMemo(
+		() =>
+			navigation.map((item, index) => (
+				<Link
+					href={item.url}
+					key={index}
+				>
+					<a
+						className={`after:dark:bg-blue-600 after:bg-amber-400 after:absolute after:w-full after:h-[10px] after:bottom-[3px] after:-left-[6px] after:-z-[1] after:scale-x-0 after:origin-bottom-right after:transition-transform duration-200 after:hover:origin-bottom-left after:hover:scale-x-100 hover:text-black relative dark:hover:text-white font-medium md:flex md:mb-0 mb-4 table ${
+							asPath === item.url
+								? 'after:dark:bg-blue-600 after:bg-amber-400 after:absolute after:w-full after:h-[10px] after:bottom-[3px] after:-left-[6px] after:-z-[1] after:scale-x-100 after:origin-bottom-right after:transition-transform duration-200'
+								: ''
+						}`}
+						onClick={() => setDrawer(false)}
+					>
+						{t.menu[item.name as keyof typeof t.menu].toUpperCase()}
+					</a>
+				</Link>
+			)),
+		[asPath, t]
+	);
 
+	// adjust header color based on scrolled height
+	useEffect(() => {
+		const handleResize = () => {
+			window.scrollY > 0 ? setScrolled(true) : setScrolled(false);
+		};
+		window.addEventListener('scroll', handleResize);
+		return () => {
+			window.removeEventListener('scroll', handleResize);
+		};
+	}, []);
+
+	// close dropdowns if user click outside of their area
 	useEffect(() => {
 		const closeSelector = (e: Event) => {
 			const target = e.target as Element;
@@ -50,108 +71,103 @@ const Header: React.FC = () => {
 		};
 	}, [dropdown]);
 
+	// close drawer if user went out of mobile screen
+	useEffect(() => {
+		if (width > 768) setDrawer(false);
+	}, [width]);
+
+	// prevent theme flickering
 	useEffect(() => setMounted(true), []);
 	if (!mounted) return null;
 
 	return (
-		<header
-			className={`sticky top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur animate-slide ${
-				scrolled ? '' : ''
-			}`}
-		>
-			<nav className="flex items-center p-2 min-h-[4rem] w-full ">
-				<div className="flex flex-0 sm:gap-6 gap-2 max-w-7xl mx-auto w-full sm:justify-end justify-around items-center">
-					{navigation.map((item, index) => (
-						<Link
-							href={item.url}
-							key={index}
-						>
-							<a
-								className={`menu-item hover:text-black dark:hover:text-white transition-colors font-medium flex ${
-									asPath === item.url ? 'active text-black dark:text-white' : ''
-								}`}
-							>
-								{t.menu[item.name as keyof typeof t.menu].toUpperCase()}
-							</a>
-						</Link>
-					))}
-					<div className="flex gap-1">
-						<div className="dropdown relative inline-block">
+		<>
+			<Drawer
+				open={drawer}
+				onClose={() => setDrawer(false)}
+			>
+				{navItems}
+			</Drawer>
+			<header
+				className={`fixed top-0 z-20 flex w-full justify-center animate-slideIn duration-300 ${
+					scrolled ? 'bg-zinc-50 dark:bg-zinc-800 shadow-md h-16' : 'h-20'
+				}`}
+			>
+				<nav className="flex items-center p-2 min-h-[4rem] w-full">
+					<div className="flex-0 sm:gap-6 gap-2 max-w-7xl mx-auto w-full sm:justify-end justify-between items-center flex">
+						<div className="justify-end gap-8 md:flex hidden">{navItems}</div>
+						<div className="md:hidden flex mx-auto w-full justify-start items-center">
 							<div
-								className="gap-1 hover:bg-blue-600 hover:text-white rounded inline-flex cursor-pointer select-none items-center justify-center h-8 px-2 transition-colors"
+								className="dark:hover:bg-blue-600 hover:bg-amber-400 rounded inline-flex cursor-pointer select-none h-8 px-2"
+								onClick={() => setDrawer(!drawer)}
+							>
+								<Bars3Icon className="w-6" />
+							</div>
+						</div>
+						<div className="flex gap-1">
+							<Dropdown
+								open={dropdown.language}
 								onClick={() =>
 									setDropdown({ ...dropdown, language: !dropdown.language, theme: false })
 								}
+								icon={<LanguageIcon className="w-6" />}
 							>
-								<LanguageIcon className="w-5" />
-								<ChevronDownIcon className="w-3" />
-							</div>
-							{dropdown.language && (
-								<div className="absolute mt-5 right-0 w-36 rounded-lg dark:bg-slate-700 bg-slate-200">
-									<ul className="flex flex-col gap-1 p-2">
-										{locales?.map((l, i) => (
-											<Link
-												key={i}
-												href={asPath}
-												locale={l}
-											>
-												<li
-													className={`rounded-lg py-2 px-4 font-medium cursor-pointer flex gap-2 transition-colors dark:hover:bg-slate-600 hover:bg-slate-300 ${
-														l === locale ? '!bg-blue-600 text-white' : ''
-													}`}
-												>
-													<Image
-														src={languageOptions.flags[l as keyof typeof languageOptions.flags]}
-														width="32"
-														height="24"
-														alt={l}
-													/>
-													{
-														languageOptions.abbreviations[
-															l as keyof typeof languageOptions.abbreviations
-														]
-													}
-												</li>
-											</Link>
-										))}
-									</ul>
-								</div>
-							)}
-						</div>
-						<div className="dropdown relative inline-block">
-							<div
-								className="gap-1 hover:bg-blue-600 hover:text-white rounded inline-flex cursor-pointer select-none items-center justify-center h-8 px-2 transition-colors"
+								{locales?.map((l, i) => (
+									<Link
+										key={i}
+										href={asPath}
+										locale={l}
+									>
+										<li
+											className={`rounded-lg py-2 px-4 font-medium cursor-pointer flex gap-2 ${
+												l === locale
+													? 'dark:bg-blue-600 bg-amber-400'
+													: 'dark:hover:bg-zinc-600 hover:bg-zinc-300'
+											}`}
+										>
+											<Image
+												src={languageOptions.flags[l as keyof typeof languageOptions.flags]}
+												width="32"
+												height="24"
+												alt={l}
+											/>
+											{
+												languageOptions.abbreviations[
+													l as keyof typeof languageOptions.abbreviations
+												]
+											}
+										</li>
+									</Link>
+								))}
+							</Dropdown>
+							<Dropdown
+								open={dropdown.theme}
 								onClick={() =>
-									setDropdown({ ...dropdown, theme: !dropdown.theme, language: false })
+									setDropdown({ ...dropdown, language: false, theme: !dropdown.theme })
 								}
+								icon={<SwatchIcon className="w-6" />}
 							>
-								<SwatchIcon className="w-5" />
-								<ChevronDownIcon className="w-3" />
-							</div>
-							{dropdown.theme && (
-								<div className="absolute mt-5 right-0 w-36 rounded-lg dark:bg-slate-700 bg-slate-200">
-									<ul className="flex flex-col gap-1 p-2">
-										{themes.map((theme, i) => (
-											<li
-												key={i}
-												className={`rounded-lg py-2 px-4 font-medium cursor-pointer flex gap-2 transition-colors dark:hover:bg-slate-600 hover:bg-slate-300 ${
-													theme.name === currentTheme ? '!bg-blue-600 text-white' : ''
-												}`}
-												onClick={() => setTheme(theme.name)}
-											>
-												{theme.icon}
-												{t.themes[theme.name as keyof typeof t.themes][0].toUpperCase() +
-													t.themes[theme.name as keyof typeof t.themes].slice(1)}
-											</li>
-										))}
-									</ul>
-								</div>
-							)}
+								{themes.map((theme, i) => (
+									<li
+										key={i}
+										className={`rounded-lg py-2 px-4 font-medium cursor-pointer flex gap-2  ${
+											theme.name === currentTheme
+												? 'dark:bg-blue-600 bg-amber-400'
+												: 'dark:hover:bg-zinc-600 hover:bg-zinc-300'
+										}`}
+										onClick={() => setTheme(theme.name)}
+									>
+										{theme.icon}
+										{t.themes[theme.name as keyof typeof t.themes][0].toUpperCase() +
+											t.themes[theme.name as keyof typeof t.themes].slice(1)}
+									</li>
+								))}
+							</Dropdown>
 						</div>
 					</div>
-				</div>
-			</nav>
-		</header>
+				</nav>
+			</header>
+		</>
 	);
 };
 

@@ -5,8 +5,8 @@ module.exports = {
 	theme: {
 		extend: {},
 		keyframes: {
-			slide: {
-				'0%': { transform: 'translateY(-94px);' },
+			slideIn: {
+				'0%': { transform: 'translateY(-80px);' },
 				'100%': { transform: 'translateY(0);' },
 			},
 			fadeIn: {
@@ -16,8 +16,8 @@ module.exports = {
 			},
 		},
 		animation: {
-			slide: 'slide 500ms ease-in-out',
-			fadeIn: 'fadeIn 250ms ease-in-out',
+			slideIn: 'slideIn 500ms ease-in-out',
+			fadeIn: 'fadeIn 500ms ease-in-out',
 		},
 	},
 	plugins: [],
