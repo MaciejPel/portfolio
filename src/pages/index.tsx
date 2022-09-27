@@ -7,7 +7,7 @@ const Home: NextPage = () => {
 	const t = locale === 'en' ? en : pl;
 
 	return (
-		<div className="animate-fadeIn min-h-[300vh]">
+		<div className="container mx-auto animate-fadeIn min-h-[100vh]">
 			<h1>{t.title}</h1>
 		</div>
 	);

@@ -22,7 +22,7 @@ const Drawer: React.FC<DrawerProps> = ({ open, onClose, children }) => {
 						<XMarkIcon className="w-8" />
 					</div>
 				</div>
-				<div className="block text-2xl">{children}</div>
+				<div className="block text-[20px]">{children}</div>
 			</div>
 			<div
 				className={`bg-black opacity-50 dark:opacity-25 z-40 h-screen left-0 top-0 w-full fixed cursor-pointer ${

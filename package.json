@@ -7,7 +7,7 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"styles": "npx tailwindcss -o /src/styles/index.css --minify"
+		"styles": "npx tailwindcss -o ./src/styles/index.css --minify"
 	},
 	"dependencies": {
 		"@heroicons/react": "^2.0.11",

@@ -89,12 +89,12 @@ const Header: React.FC = () => {
 				{navItems}
 			</Drawer>
 			<header
-				className={`fixed top-0 z-20 flex w-full justify-center animate-slideIn duration-300 ${
-					scrolled ? 'bg-zinc-50 dark:bg-zinc-800 shadow-md h-16' : 'h-20'
+				className={`fixed top-0 z-20 flex w-full justify-center animate-slideInTop transition-header duration-300 ${
+					scrolled ? 'bg-zinc-50 dark:bg-zinc-800 shadow-md h-20' : 'h-28'
 				}`}
 			>
 				<nav className="flex items-center p-2 min-h-[4rem] w-full">
-					<div className="flex-0 sm:gap-6 gap-2 max-w-7xl mx-auto w-full sm:justify-end justify-between items-center flex">
+					<div className="sm:gap-6 gap-2 container mx-auto w-full sm:justify-end justify-between items-center flex">
 						<div className="justify-end gap-8 md:flex hidden">{navItems}</div>
 						<div className="md:hidden flex mx-auto w-full justify-start items-center">
 							<div

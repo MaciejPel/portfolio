@@ -15,3 +15,14 @@
 .light ::selection {
 	background: #fbbf24;
 }
+
+.transition-header {
+	transition-property: background-color, height;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+	scroll-behavior: smooth;
+	/* scroll-padding: 88px; */
+}
+

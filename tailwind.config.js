@@ -5,18 +5,17 @@ module.exports = {
 	theme: {
 		extend: {},
 		keyframes: {
-			slideIn: {
+			slideInTop: {
 				'0%': { transform: 'translateY(-80px);' },
 				'100%': { transform: 'translateY(0);' },
 			},
 			fadeIn: {
-				'0%': { opacity: '0;' },
-				'50%': { opacity: '0;' },
+				'0%, 50%': { opacity: '0;' },
 				'100%': { opacity: '1;' },
 			},
 		},
 		animation: {
-			slideIn: 'slideIn 500ms ease-in-out',
+			slideInTop: 'slideInTop 500ms ease-in-out',
 			fadeIn: 'fadeIn 500ms ease-in-out',
 		},
 	},

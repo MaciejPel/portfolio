@@ -8,7 +8,6 @@ const App = ({ Component, pageProps }: AppProps) => {
 		<ThemeProvider
 			attribute="class"
 			defaultTheme="system"
-			themes={['light', 'dark']}
 		>
 			<Layout>
 				<Component {...pageProps} />

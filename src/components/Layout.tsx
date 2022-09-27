@@ -1,14 +1,16 @@
+import Footer from './Footer';
 import Header from './Header';
 import Meta from './Meta';
+import ToTop from './ToTop';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 	return (
 		<>
 			<Meta />
 			<Header />
-			<main className="flex flex-col justify-start py-2 mt-20 font-medium md:mx-auto md:max-w-4xl xl:max-w-5xl 2xl:max-w-7xl px-8 w-full">
-				{children}
-			</main>
+			<main className="mt-28 pt-2 pb-14">{children}</main>
+			<Footer />
+			<ToTop />
 		</>
 	);
 };
