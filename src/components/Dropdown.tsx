@@ -11,7 +11,9 @@ const Dropdown: React.FC<DropdownProps> = ({ open, onClick, icon, children }) =>
 	return (
 		<div className="dropdown relative inline-block">
 			<div
-				className="gap-1 dark:hover:bg-blue-600 hover:bg-amber-400 rounded inline-flex cursor-pointer select-none items-center justify-center h-8 px-2"
+				className={`gap-1 dark:hover:bg-blue-600 hover:bg-amber-400 rounded inline-flex cursor-pointer select-none items-center justify-center h-8 px-2 ${
+					open ? 'dark:bg-blue-600 bg-amber-400' : ''
+				}`}
 				onClick={() => onClick()}
 			>
 				{icon}

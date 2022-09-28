@@ -3,7 +3,12 @@ module.exports = {
 	content: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
 	darkMode: 'class',
 	theme: {
-		extend: {},
+		extend: {
+			colors: {
+				alabaster: '#ede9e0',
+				linen: '#ece4db',
+			},
+		},
 		keyframes: {
 			slideInTop: {
 				'0%': { transform: 'translateY(-80px);' },

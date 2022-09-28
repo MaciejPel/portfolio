@@ -15,7 +15,7 @@ const themes = [
 	{ name: 'dark', icon: <MoonIcon className="w-5" /> },
 ];
 
-const Header: React.FC = () => {
+const Header: React.FC<{ active: string }> = ({ active }) => {
 	const { locale, locales, asPath } = useRouter();
 	const t = locale === 'en' ? en : pl;
 	const { theme: currentTheme, setTheme } = useTheme();
@@ -26,30 +26,37 @@ const Header: React.FC = () => {
 	const [drawer, setDrawer] = useState(false);
 	const [dropdown, setDropdown] = useState({ language: false, theme: false });
 
+	const scrollTo = (id: string) => {
+		const el = document.getElementById(`${id}`);
+		if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	};
+
 	const navItems: JSX.Element[] = useMemo(
 		() =>
 			navigation.map((item, index) => (
-				<Link
-					href={item.url}
+				<a
 					key={index}
+					className={`after:dark:bg-blue-600 after:bg-amber-400 after:absolute after:w-full after:h-[10px] after:bottom-[3px] after:-left-[6px] after:-z-[1] after:scale-x-0 after:origin-bottom-right after:transition-transform duration-200 after:hover:origin-bottom-left after:hover:scale-x-100 hover:text-black relative dark:hover:text-white font-medium md:flex md:mb-0 mb-4 table select-none cursor-pointer ${
+						item.url === active
+							? 'after:dark:bg-blue-600 after:bg-amber-400 after:absolute after:w-full after:h-[10px] after:bottom-[3px] after:-left-[6px] after:-z-[1] after:scale-x-100 after:origin-bottom-right after:transition-transform duration-200'
+							: ''
+					}`}
+					onClick={() => {
+						setDrawer(false);
+						scrollTo(item.url);
+					}}
 				>
-					<a
-						className={`after:dark:bg-blue-600 after:bg-amber-400 after:absolute after:w-full after:h-[10px] after:bottom-[3px] after:-left-[6px] after:-z-[1] after:scale-x-0 after:origin-bottom-right after:transition-transform duration-200 after:hover:origin-bottom-left after:hover:scale-x-100 hover:text-black relative dark:hover:text-white font-medium md:flex md:mb-0 mb-4 table ${
-							asPath === item.url
-								? 'after:dark:bg-blue-600 after:bg-amber-400 after:absolute after:w-full after:h-[10px] after:bottom-[3px] after:-left-[6px] after:-z-[1] after:scale-x-100 after:origin-bottom-right after:transition-transform duration-200'
-								: ''
-						}`}
-						onClick={() => setDrawer(false)}
-					>
-						{t.menu[item.name as keyof typeof t.menu].toUpperCase()}
-					</a>
-				</Link>
+					{t.menu[item.name as keyof typeof t.menu].toUpperCase()}
+				</a>
 			)),
-		[asPath, t]
+		[active, t]
 	);
 
 	// adjust header color based on scrolled height
 	useEffect(() => {
+		if (window.scrollY > 0) {
+			setScrolled(true);
+		}
 		const handleResize = () => {
 			window.scrollY > 0 ? setScrolled(true) : setScrolled(false);
 		};
@@ -89,12 +96,12 @@ const Header: React.FC = () => {
 				{navItems}
 			</Drawer>
 			<header
-				className={`fixed top-0 z-20 flex w-full justify-center animate-slideInTop transition-header duration-300 ${
+				className={`fixed top-0 z-20 flex w-full justify-center animate-slideInTop transition-header duration-100 ${
 					scrolled ? 'bg-zinc-50 dark:bg-zinc-800 shadow-md h-20' : 'h-28'
 				}`}
 			>
 				<nav className="flex items-center p-2 min-h-[4rem] w-full">
-					<div className="sm:gap-6 gap-2 container mx-auto w-full sm:justify-end justify-between items-center flex">
+					<div className="sm:gap-6 gap-2 container md:px-8 mx-auto w-full sm:justify-end justify-between items-center flex">
 						<div className="justify-end gap-8 md:flex hidden">{navItems}</div>
 						<div className="md:hidden flex mx-auto w-full justify-start items-center">
 							<div
@@ -122,7 +129,7 @@ const Header: React.FC = () => {
 											className={`rounded-lg py-2 px-4 font-medium cursor-pointer flex gap-2 ${
 												l === locale
 													? 'dark:bg-blue-600 bg-amber-400'
-													: 'dark:hover:bg-zinc-600 hover:bg-zinc-300'
+													: 'dark:hover:bg-zinc-600 hover:bg-zinc-100'
 											}`}
 										>
 											<Image
@@ -153,7 +160,7 @@ const Header: React.FC = () => {
 										className={`rounded-lg py-2 px-4 font-medium cursor-pointer flex gap-2  ${
 											theme.name === currentTheme
 												? 'dark:bg-blue-600 bg-amber-400'
-												: 'dark:hover:bg-zinc-600 hover:bg-zinc-300'
+												: 'dark:hover:bg-zinc-600 hover:bg-zinc-100'
 										}`}
 										onClick={() => setTheme(theme.name)}
 									>

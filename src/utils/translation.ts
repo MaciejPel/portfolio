@@ -1,30 +1,36 @@
-import plFlag from '../../public/flags/pl.png';
-import usFlag from '../../public/flags/us.png';
+import plFlag from '../../public/flags/pl.svg';
+import usFlag from '../../public/flags/us.svg';
 
 export const pl = {
 	title: 'Witaj w Next.js!',
 	menu: {
-		home: 'Strona główna',
+		home: 'Start',
+		about: 'O mnie',
+		technologies: 'Technologie',
 		projects: 'Projekty',
-		contact: 'Kontakt',
+		mile_steps: 'Moja droga',
 	},
 	themes: {
 		light: 'Jasny',
 		dark: 'Ciemny',
 	},
+	copyright: 'Wszystkie prawa zastrzeżone.',
 };
 
 export const en = {
 	title: 'Welcome to Next.js!',
 	menu: {
 		home: 'Home',
+		about: 'About me',
+		technologies: 'Technologies',
 		projects: 'Projects',
-		contact: 'Contact',
+		mile_steps: 'Mile steps',
 	},
 	themes: {
 		light: 'Light',
 		dark: 'Dark',
 	},
+	copyright: 'All rights reserved.',
 };
 
 export const languageOptions = {

@@ -1,14 +1,18 @@
-import Footer from './Footer';
 import Header from './Header';
 import Meta from './Meta';
 import ToTop from './ToTop';
+import Footer from './Footer';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 
-const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const Layout: React.FC<{ children: React.ReactElement }> = ({ children }) => {
+	const [active, setActive] = useState<string>('home');
+
 	return (
 		<>
 			<Meta />
-			<Header />
-			<main className="mt-28 pt-2 pb-14">{children}</main>
+			<Header active={active} />
+			<main>{React.cloneElement(children, { active, setActive })}</main>
 			<Footer />
 			<ToTop />
 		</>
