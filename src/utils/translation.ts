@@ -8,11 +8,16 @@ export const pl = {
 		about: 'O mnie',
 		technologies: 'Technologie',
 		projects: 'Projekty',
-		mile_steps: 'Moja droga',
+		'mile-steps': 'Moja droga',
 	},
 	themes: {
 		light: 'Jasny',
 		dark: 'Ciemny',
+	},
+	sections: {
+		technologies: {
+			description: 'Technologie, z kórych korzystam na co dzień',
+		},
 	},
 	copyright: 'Wszystkie prawa zastrzeżone.',
 };
@@ -21,14 +26,19 @@ export const en = {
 	title: 'Welcome to Next.js!',
 	menu: {
 		home: 'Home',
-		about: 'About me',
+		about: 'About',
 		technologies: 'Technologies',
 		projects: 'Projects',
-		mile_steps: 'Mile steps',
+		'mile-steps': 'Mile steps',
 	},
 	themes: {
 		light: 'Light',
 		dark: 'Dark',
+	},
+	sections: {
+		technologies: {
+			description: "Technologies I'm comfortable to work with",
+		},
 	},
 	copyright: 'All rights reserved.',
 };

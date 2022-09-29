@@ -23,6 +23,18 @@
 
 html {
 	scroll-behavior: smooth;
-	scroll-padding: 80px;
+	scroll-padding: 75px;
+}
+
+.btn-active {
+	@apply after:dark:bg-blue-600 after:bg-amber-400 after:absolute after:w-full after:h-[10px] after:bottom-[3px] after:-left-[6px] after:-z-[1] after:scale-x-0 after:origin-bottom-right after:transition-transform duration-200 after:hover:origin-bottom-left after:hover:scale-x-100 relative;
+}
+
+.btn-active:hover {
+	@apply after:scale-x-100;
+}
+
+.active {
+	@apply after:scale-x-100;
 }
 

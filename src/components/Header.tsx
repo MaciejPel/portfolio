@@ -9,6 +9,7 @@ import { LanguageIcon, SwatchIcon, SunIcon, MoonIcon, Bars3Icon } from '@heroico
 import useWindowSize from '../hooks/useWindowSize';
 import Drawer from './Drawer';
 import Dropdown from './Dropdown';
+import Meta from './Meta';
 
 const themes = [
 	{ name: 'light', icon: <SunIcon className="w-5" /> },
@@ -36,14 +37,12 @@ const Header: React.FC<{ active: string }> = ({ active }) => {
 			navigation.map((item, index) => (
 				<a
 					key={index}
-					className={`after:dark:bg-blue-600 after:bg-amber-400 after:absolute after:w-full after:h-[10px] after:bottom-[3px] after:-left-[6px] after:-z-[1] after:scale-x-0 after:origin-bottom-right after:transition-transform duration-200 after:hover:origin-bottom-left after:hover:scale-x-100 hover:text-black relative dark:hover:text-white font-medium md:flex md:mb-0 mb-4 table select-none cursor-pointer ${
-						item.url === active
-							? 'after:dark:bg-blue-600 after:bg-amber-400 after:absolute after:w-full after:h-[10px] after:bottom-[3px] after:-left-[6px] after:-z-[1] after:scale-x-100 after:origin-bottom-right after:transition-transform duration-200'
-							: ''
+					className={`btn-active font-medium md:flex md:mb-0 mb-4 table select-none cursor-pointer ${
+						item.id === active ? 'active' : ''
 					}`}
 					onClick={() => {
 						setDrawer(false);
-						scrollTo(item.url);
+						scrollTo(item.id);
 					}}
 				>
 					{t.menu[item.name as keyof typeof t.menu].toUpperCase()}
@@ -89,6 +88,12 @@ const Header: React.FC<{ active: string }> = ({ active }) => {
 
 	return (
 		<>
+			<Meta
+				title={
+					t.menu[active as keyof typeof t.menu][0].toUpperCase() +
+					t.menu[active as keyof typeof t.menu].slice(1)
+				}
+			/>
 			<Drawer
 				open={drawer}
 				onClose={() => setDrawer(false)}
@@ -97,7 +102,7 @@ const Header: React.FC<{ active: string }> = ({ active }) => {
 			</Drawer>
 			<header
 				className={`fixed top-0 z-20 flex w-full justify-center animate-slideInTop transition-header duration-100 ${
-					scrolled ? 'bg-zinc-50 dark:bg-zinc-800 shadow-md h-20' : 'h-28'
+					scrolled ? 'bg-zinc-50 dark:bg-zinc-900 shadow-md h-20' : 'h-28'
 				}`}
 			>
 				<nav className="flex items-center p-2 min-h-[4rem] w-full">
