@@ -15,8 +15,20 @@ export const pl = {
 		dark: 'Ciemny',
 	},
 	sections: {
+		home: {
+			welcome: 'Cześć, jestem',
+			developer: 'Frontend Developer',
+			enthusiast: 'Entuzjasta Internetu',
+			enjoyer: 'Miłośnik technologii',
+		},
 		technologies: {
 			description: 'Technologie, z kórych korzystam na co dzień',
+			'programming languages': 'języki programowania',
+			styling: 'style',
+			databases: 'bazy danych',
+			frontend: 'frontend',
+			backend: 'backend',
+			other: 'inne',
 		},
 	},
 	copyright: 'Wszystkie prawa zastrzeżone.',
@@ -36,8 +48,20 @@ export const en = {
 		dark: 'Dark',
 	},
 	sections: {
+		home: {
+			welcome: 'Hi, my name is',
+			developer: 'Frontend Developer',
+			enthusiast: 'Web Enthusiast',
+			enjoyer: 'Technology Enjoyer',
+		},
 		technologies: {
 			description: "Technologies I'm comfortable to work with",
+			'programming languages': 'programming languages',
+			styling: 'styling',
+			databases: 'databases',
+			frontend: 'frontend',
+			backend: 'backend',
+			other: 'other',
 		},
 	},
 	copyright: 'All rights reserved.',

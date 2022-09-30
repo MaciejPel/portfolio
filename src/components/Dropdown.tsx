@@ -20,7 +20,7 @@ const Dropdown: React.FC<DropdownProps> = ({ open, onClick, icon, children }) =>
 				<ChevronDownIcon className="w-3" />
 			</div>
 			{open && (
-				<div className="absolute mt-1 right-0 w-36 rounded-lg dark:bg-zinc-700 bg-zinc-200">
+				<div className="absolute mt-1 right-0 w-36 rounded-lg dark:bg-zinc-700 bg-zinc-200 shadow-md">
 					<ul className="flex flex-col gap-1 p-2">{children}</ul>
 				</div>
 			)}

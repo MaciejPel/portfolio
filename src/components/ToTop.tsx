@@ -15,7 +15,7 @@ const ToTop: React.FC = () => {
 	}, []);
 
 	return (
-		<div className={`fixed md:bottom-4 bottom-6 right-4 ${scrolled ? 'block' : 'hidden'}`}>
+		<div className={`fixed z-50 md:bottom-4 bottom-6 right-4 ${scrolled ? 'block' : 'hidden'}`}>
 			<button
 				title="Navigate to top"
 				type="button"

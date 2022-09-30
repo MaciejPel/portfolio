@@ -8,20 +8,25 @@ module.exports = {
 				alabaster: '#ede9e0',
 				linen: '#ece4db',
 			},
-		},
-		keyframes: {
-			slideInTop: {
-				'0%': { transform: 'translateY(-80px);' },
-				'100%': { transform: 'translateY(0);' },
+			keyframes: {
+				slideInTop: {
+					'0%': { transform: 'translateY(-80px);' },
+					'100%': { transform: 'translateY(0);' },
+				},
+				fadeIn: {
+					'0%, 50%': { opacity: '0;' },
+					'100%': { opacity: '1;' },
+				},
+				spinSlow: {
+					'0%': { transform: 'rotate(0);' },
+					'100%': { transform: 'rotate(360deg);' },
+				},
 			},
-			fadeIn: {
-				'0%, 50%': { opacity: '0;' },
-				'100%': { opacity: '1;' },
+			animation: {
+				slideInTop: 'slideInTop 500ms ease-in-out',
+				fadeIn: 'fadeIn 1500ms ease-in-out',
+				spinSlow: 'spinSlow 8s linear infinite',
 			},
-		},
-		animation: {
-			slideInTop: 'slideInTop 500ms ease-in-out',
-			fadeIn: 'fadeIn 500ms ease-in-out',
 		},
 	},
 	plugins: [],

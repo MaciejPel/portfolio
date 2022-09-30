@@ -53,11 +53,9 @@ const Header: React.FC<{ active: string }> = ({ active }) => {
 
 	// adjust header color based on scrolled height
 	useEffect(() => {
-		if (window.scrollY > 0) {
-			setScrolled(true);
-		}
+		if (window.scrollY > 50) setScrolled(true);
 		const handleResize = () => {
-			window.scrollY > 0 ? setScrolled(true) : setScrolled(false);
+			window.scrollY > 50 ? setScrolled(true) : setScrolled(false);
 		};
 		window.addEventListener('scroll', handleResize);
 		return () => {

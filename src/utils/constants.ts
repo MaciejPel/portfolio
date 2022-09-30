@@ -59,9 +59,9 @@ export const technologies: TechnologiesInterface[] = [
 
 export const technologyCategories: TypeUnion[] = [
 	'programming languages',
-	'styling',
-	'databases',
 	'frontend',
+	'styling',
 	'backend',
+	'databases',
 	'other',
 ];

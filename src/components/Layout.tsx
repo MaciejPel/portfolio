@@ -3,7 +3,6 @@ import Meta from './Meta';
 import ToTop from './ToTop';
 import Footer from './Footer';
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
 
 const Layout: React.FC<{ children: React.ReactElement }> = ({ children }) => {
 	const [active, setActive] = useState<string>('home');
