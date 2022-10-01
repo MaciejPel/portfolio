@@ -1,18 +1,19 @@
 import { StaticImageData } from 'next/image';
-import htmlcssLogo from '../../public/logos/htmlcss.png';
-import jstsLogo from '../../public/logos/jsts.png';
-import reactLogo from '../../public/logos/react.png';
-import nextLogo from '../../public/logos/next.png';
-import reduxLogo from '../../public/logos/redux.png';
-import nodeLogo from '../../public/logos/nodejs.png';
-import tailwindLogo from '../../public/logos/tailwind.png';
-import sassLogo from '../../public/logos/sass.png';
-import mysqlLogo from '../../public/logos/mysql.png';
-import mongoLogo from '../../public/logos/mongo.png';
-import pythonLogo from '../../public/logos/python.png';
-import gitLogo from '../../public/logos/git.png';
-import phpLogo from '../../public/logos/php.png';
-import wordpressLogo from '../../public/logos/wordpress.png';
+import htmlcssLogo from '../../public/logos/htmlcss.svg';
+import jstsLogo from '../../public/logos/jsts.svg';
+import reactLogo from '../../public/logos/react.svg';
+import nextLogo from '../../public/logos/next.svg';
+import reduxLogo from '../../public/logos/redux.svg';
+import nodeLogo from '../../public/logos/nodejs.svg';
+import tailwindLogo from '../../public/logos/tailwind.svg';
+import sassLogo from '../../public/logos/sass.svg';
+import mysqlLogo from '../../public/logos/mysql.svg';
+import mongoLogo from '../../public/logos/mongo.svg';
+import prismaLogo from '../../public/logos/prisma.svg';
+import pythonLogo from '../../public/logos/python.svg';
+import gitLogo from '../../public/logos/git.svg';
+import phpLogo from '../../public/logos/php.svg';
+import wordpressLogo from '../../public/logos/wordpress.svg';
 
 export interface TechnologiesInterface {
 	name: string;
@@ -51,6 +52,7 @@ export const technologies: TechnologiesInterface[] = [
 	{ name: 'Sass', img: sassLogo, type: ['styling', 'frontend'] },
 	{ name: 'MySQL', img: mysqlLogo, type: ['databases', 'backend'] },
 	{ name: 'MongoDB', img: mongoLogo, type: ['databases', 'backend'] },
+	{ name: 'Prisma', img: prismaLogo, type: ['databases', 'backend'] },
 	{ name: 'Python', img: pythonLogo, type: ['programming languages'] },
 	{ name: 'Git', img: gitLogo, type: ['other'] },
 	{ name: 'PHP', img: phpLogo, type: ['programming languages', 'backend'] },

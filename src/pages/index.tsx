@@ -180,4 +180,3 @@ const Home: NextPage<HomeProps> = ({ active, setActive }) => {
 };
 
 export default Home;
-
