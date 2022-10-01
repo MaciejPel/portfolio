@@ -2,13 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import useScroll from '../hooks/useScroll';
 import { en, pl } from '../utils/translation';
 import { technologies, technologyCategories, TypeUnion } from '../utils/constants';
+import Typewriter from 'typewriter-effect';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import ToNext from '../components/ToNext';
-import blob1 from '../../public/svgs/blob1.svg';
-import blob2 from '../../public/svgs/blob2.svg';
-import Typewriter from 'typewriter-effect';
+import blob1 from '../../public/blobs/blob1.svg';
+import blob2 from '../../public/blobs/blob2.svg';
 
 interface HomeProps {
 	active: string;
@@ -18,26 +19,20 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ active, setActive }) => {
 	const { locale } = useRouter();
 	const t = locale === 'en' ? en : pl;
+	const { scrollY } = useScroll();
 	const refs = useRef<HTMLElement[] | null[]>([]);
 
 	const [tech, setTech] = useState<TypeUnion[]>([]);
-	const [text, setText] = useState<string>();
 
 	useEffect(() => {
-		const handleScroll = () => {
-			let lowestDiff: [string, number] = ['home', 10000];
-			refs.current.forEach((item) => {
-				if (item && Math.abs(item.offsetTop - window.scrollY) < lowestDiff[1]) {
-					lowestDiff = [item.id, Math.abs(item.offsetTop - window.scrollY)];
-				}
-			});
-			setActive(lowestDiff[0]);
-		};
-		window.addEventListener('scroll', handleScroll);
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
-	}, [setActive]);
+		let lowestDiff: [string, number] = ['home', 10000];
+		refs.current.forEach((item) => {
+			if (item && Math.abs(item.offsetTop - scrollY) < lowestDiff[1]) {
+				lowestDiff = [item.id, Math.abs(item.offsetTop - window.scrollY)];
+			}
+		});
+		setActive(lowestDiff[0]);
+	}, [scrollY, setActive]);
 
 	return (
 		<>
@@ -52,7 +47,7 @@ const Home: NextPage<HomeProps> = ({ active, setActive }) => {
 						alt="blob"
 					/>
 				</div>
-				<div className="absolute w-40 h-40 -z-3 top-[27%] right-[12%]">
+				<div className="absolute w-40 h-40 -z-3 top-[27%] right-[12%] animate-spinSlow">
 					<Image
 						src={blob2}
 						alt="blob"

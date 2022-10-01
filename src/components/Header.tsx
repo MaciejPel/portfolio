@@ -7,6 +7,7 @@ import { en, pl, languageOptions } from '../utils/translation';
 import { navigation } from '../utils/constants';
 import { LanguageIcon, SwatchIcon, SunIcon, MoonIcon, Bars3Icon } from '@heroicons/react/24/solid';
 import useWindowSize from '../hooks/useWindowSize';
+import useScroll from '../hooks/useScroll';
 import Drawer from './Drawer';
 import Dropdown from './Dropdown';
 import Meta from './Meta';
@@ -21,9 +22,9 @@ const Header: React.FC<{ active: string }> = ({ active }) => {
 	const t = locale === 'en' ? en : pl;
 	const { theme: currentTheme, setTheme } = useTheme();
 	const { width } = useWindowSize();
+	const { scrollY } = useScroll();
 
 	const [mounted, setMounted] = useState(false);
-	const [scrolled, setScrolled] = useState(false);
 	const [drawer, setDrawer] = useState(false);
 	const [dropdown, setDropdown] = useState({ language: false, theme: false });
 
@@ -50,18 +51,6 @@ const Header: React.FC<{ active: string }> = ({ active }) => {
 			)),
 		[active, t]
 	);
-
-	// adjust header color based on scrolled height
-	useEffect(() => {
-		if (window.scrollY > 50) setScrolled(true);
-		const handleResize = () => {
-			window.scrollY > 50 ? setScrolled(true) : setScrolled(false);
-		};
-		window.addEventListener('scroll', handleResize);
-		return () => {
-			window.removeEventListener('scroll', handleResize);
-		};
-	}, []);
 
 	// close dropdowns if user click outside of their area
 	useEffect(() => {
@@ -100,7 +89,7 @@ const Header: React.FC<{ active: string }> = ({ active }) => {
 			</Drawer>
 			<header
 				className={`fixed top-0 z-20 flex w-full justify-center animate-slideInTop transition-header duration-100 ${
-					scrolled ? 'bg-zinc-50 dark:bg-zinc-900 shadow-md h-20' : 'h-28'
+					scrollY > 300 ? 'bg-zinc-50 dark:bg-zinc-900 shadow-md h-20' : 'h-28'
 				}`}
 			>
 				<nav className="flex items-center p-2 min-h-[4rem] w-full">
@@ -182,3 +171,4 @@ const Header: React.FC<{ active: string }> = ({ active }) => {
 };
 
 export default Header;
+

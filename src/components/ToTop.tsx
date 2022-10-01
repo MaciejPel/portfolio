@@ -1,21 +1,13 @@
 import { ChevronUpIcon } from '@heroicons/react/24/solid';
-import { useEffect, useState } from 'react';
+import useScroll from '../hooks/useScroll';
 
 const ToTop: React.FC = () => {
-	const [scrolled, setScrolled] = useState(false);
-
-	useEffect(() => {
-		const handleResize = () => {
-			window.scrollY > 300 ? setScrolled(true) : setScrolled(false);
-		};
-		window.addEventListener('scroll', handleResize);
-		return () => {
-			window.removeEventListener('scroll', handleResize);
-		};
-	}, []);
+	const { scrollY } = useScroll();
 
 	return (
-		<div className={`fixed z-50 md:bottom-4 bottom-6 right-4 ${scrolled ? 'block' : 'hidden'}`}>
+		<div
+			className={`fixed z-50 md:bottom-4 bottom-6 right-4 ${scrollY > 300 ? 'block' : 'hidden'}`}
+		>
 			<button
 				title="Navigate to top"
 				type="button"
@@ -29,3 +21,4 @@ const ToTop: React.FC = () => {
 };
 
 export default ToTop;
+
