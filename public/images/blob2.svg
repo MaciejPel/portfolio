@@ -14,14 +14,14 @@
       
       
       <clipPath id="shape">
-        <path fill="currentColor" d="M602.5,696Q274,892,290.5,529Q307,166,619,333Q931,500,602.5,696Z"></path>
+        <path fill="currentColor" d="M625,716.5Q250,933,250,500Q250,67,625,283.5Q1000,500,625,716.5Z"></path>
       </clipPath>
     </defs>
   
     
 
     <g  clip-path="url(#shape)">
-      <path fill="none" stroke="#ffdab9" stroke-width="40" d="M602.5,696Q274,892,290.5,529Q307,166,619,333Q931,500,602.5,696Z" />
+      <path fill="#4470d6" d="M625,716.5Q250,933,250,500Q250,67,625,283.5Q1000,500,625,716.5Z" />
     </g>
 
     

@@ -10,6 +10,7 @@
 		"styles": "npx tailwindcss -o ./src/styles/index.css --minify"
 	},
 	"dependencies": {
+		"@formkit/auto-animate": "^1.0.0-beta.3",
 		"@heroicons/react": "^2.0.11",
 		"next": "12.3.1",
 		"next-themes": "^0.2.1",
