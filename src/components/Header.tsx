@@ -39,14 +39,14 @@ const Header: React.FC<{ active: string }> = ({ active }) => {
 				<a
 					key={index}
 					className={`btn-active font-medium md:flex md:mb-0 mb-4 table select-none cursor-pointer ${
-						item.id === active ? 'active' : ''
+						item === active ? 'active' : ''
 					}`}
 					onClick={() => {
 						setDrawer(false);
-						scrollTo(item.id);
+						scrollTo(item);
 					}}
 				>
-					{t.menu[item.name as keyof typeof t.menu].toUpperCase()}
+					{t.menu[item as keyof typeof t.menu].toUpperCase()}
 				</a>
 			)),
 		[active, t]

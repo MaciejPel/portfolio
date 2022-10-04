@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="29.422001mm"
+   height="42.097mm"
+   viewBox="0 0 29.422001 42.097"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <rect
+       x="70.397469"
+       y="304.62906"
+       width="629.73737"
+       height="259.83066"
+       id="rect113" />
+    <rect
+       x="70.397469"
+       y="304.62906"
+       width="629.73737"
+       height="259.83066"
+       id="rect279" />
+    <filter
+       style="color-interpolation-filters:sRGB"
+       id="filter1434"
+       x="-0.2070197"
+       y="-0.12526771"
+       width="1.4140394"
+       height="1.2505354">
+      <feGaussianBlur
+         stdDeviation="6.3318916"
+         id="feGaussianBlur1436" />
+    </filter>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-4.1071651,-4.5636386)">
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-11.168598,-83.458314)"
+       id="text277"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:192px;font-family:Calibri;-inkscape-font-specification:'Calibri Bold';white-space:pre;shape-inside:url(#rect279);mix-blend-mode:normal;fill:#00ccff;filter:url(#filter1434)"><tspan
+         x="70.398438"
+         y="472.62891"
+         id="tspan2573"><tspan
+           style="font-weight:normal;-inkscape-font-specification:Calibri"
+           id="tspan2571">Σ</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-11.168598,-83.458314)"
+       id="text111"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:192px;font-family:Calibri;-inkscape-font-specification:'Calibri Bold';white-space:pre;shape-inside:url(#rect113);fill:#00ccff"><tspan
+         x="70.398438"
+         y="472.62891"
+         id="tspan2577"><tspan
+           style="font-weight:normal;-inkscape-font-specification:Calibri"
+           id="tspan2575">Σ</tspan></tspan></text>
+  </g>
+</svg>

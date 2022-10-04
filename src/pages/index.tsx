@@ -7,10 +7,11 @@ import autoAnimate from '@formkit/auto-animate';
 import { en, pl } from '../utils/translation';
 import { technologies, technologyCategories, TypeUnion } from '../utils/constants';
 import Typewriter from 'typewriter-effect';
-import { XMarkIcon } from '@heroicons/react/24/solid';
+import { ArrowTopRightOnSquareIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import ToNext from '../components/ToNext';
 import bg from '../../public/images/bg.svg';
 import bgMobile from '../../public/images/bg-mobile.svg';
+import avatar from '../../public/images/avatar.jpg';
 import blob1 from '../../public/images/blob1.svg';
 import blob2 from '../../public/images/blob2.svg';
 import blob3 from '../../public/images/blob3.svg';
@@ -18,6 +19,40 @@ import blob4 from '../../public/images/blob4.svg';
 import blob5 from '../../public/images/blob5.svg';
 import blob6 from '../../public/images/blob6.svg';
 import blob7 from '../../public/images/blob7.svg';
+import triangle from '../../public/images/triangle.svg';
+import sigma from '../../public/images/sigma.svg';
+import circle from '../../public/images/circle.svg';
+import square from '../../public/images/square.svg';
+import integral from '../../public/images/integral.svg';
+import project0 from '../../public/images/project0.jpeg';
+import project1 from '../../public/images/project1.jpeg';
+import Badge from '../components/Badge';
+import ProjectCard from '../components/ProjectCard';
+
+const blobs = [
+	{
+		img: blob1,
+		css: 'w-20 h-20 lg:block hidden -z-3 top-[17%] left-[12%] animate-spinSlowInfinite',
+	},
+	{ img: blob2, css: 'w-16 h-16 lg:block hidden -z-3 top-[14%] right-[18%] rotate-45' },
+	{ img: blob3, css: 'w-20 h-20 lg:block hidden -z-3 bottom-[15%] left-[15%]' },
+	{ img: blob4, css: 'w-16 h-16 lg:block hidden -z-3 top-[30%] left-[34%] -rotate-45' },
+	{ img: blob5, css: 'w-12 h-12 lg:block hidden -z-3 bottom-[20%] left-[40%] animate-scale' },
+	{ img: blob6, css: 'w-20 h-20 lg:block hidden -z-3 bottom-[10%] right-[9%] animate-spinSlow' },
+	{
+		img: blob7,
+		css: 'lg:block hidden -z-3 top-[29%] left-[57%] animate-spinSlowInfiniteReverse',
+	},
+];
+
+const symbols = [
+	{ img: sigma, css: 'w-24 h-24 lg:block hidden -z-3 left-[5%] top-[125%] -rotate-45' },
+	{ img: triangle, css: 'w-40 h-40 lg:block hidden -z-3 left-[22%] top-[148%] rotate-12' },
+	{ img: circle, css: 'w-40 h-40 lg:block hidden -z-3 left-[70%] top-[148%]' },
+	{ img: square, css: 'w-40 h-40 lg:block hidden -z-3 left-[46%] top-[155%] rotate-[250deg]' },
+	{ img: integral, css: 'w-20 h-20 lg:block hidden -z-3 left-[90%] top-[125%] rotate-12' },
+];
+
 interface IndexProps {
 	active: string;
 	setActive: React.Dispatch<React.SetStateAction<string>>;
@@ -30,8 +65,10 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 	const refs = useRef<HTMLElement[] | null[]>([]);
 
 	const parent = useRef(null);
-	const [items] = useState(technologies);
-	const [tech, setTech] = useState<TypeUnion[]>([]);
+	const [items] = useState(
+		Object.values(technologies).filter((item) => item.usage.includes('technologies'))
+	);
+	const [techFilter, setTechFilter] = useState<TypeUnion[]>([]);
 
 	useEffect(() => {
 		parent.current && autoAnimate(parent.current);
@@ -46,22 +83,6 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 		});
 		setActive(lowestDiff[0]);
 	}, [scrollY, setActive]);
-
-	const blobs = [
-		{
-			img: blob1,
-			css: 'w-20 h-20 lg:block hidden -z-3 top-[17%] left-[12%] animate-spinSlowInfinite',
-		},
-		{ img: blob4, css: 'w-16 h-16 lg:block hidden -z-3 top-[30%] left-[39%] rotate-45' },
-		{ img: blob2, css: 'w-16 h-16 lg:block hidden -z-3 top-[14%] right-[18%] rotate-45' },
-		{ img: blob3, css: 'w-20 h-20 lg:block hidden -z-3 bottom-[15%] left-[15%]' },
-		{ img: blob5, css: 'w-12 h-12 lg:block hidden -z-3 bottom-[20%] left-[40%] animate-scale' },
-		{ img: blob6, css: 'w-20 h-20 lg:block hidden -z-3 bottom-[10%] right-[9%] animate-spinSlow' },
-		{
-			img: blob7,
-			css: 'lg:block hidden -z-3 top-[29%] left-[57%] animate-spinSlowInfiniteReverse',
-		},
-	];
 
 	return (
 		<>
@@ -118,26 +139,55 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 						/>
 					</div>
 				</div>
-				<div className="absolute bottom-5 ">
+				<div className="absolute bottom-5">
 					<ToNext active={active} />
 				</div>
 			</section>
 			<section
 				id="about"
 				ref={(el) => (refs.current[1] = el)}
-				className="min-h-screen from-white to-zinc-100  dark:from-black dark:to-zinc-900 bg-gradient-to-b flex justify-center items-center"
+				className="from-white to-zinc-100 dark:from-black dark:to-zinc-900 bg-gradient-to-b"
 			>
-				about
-				<ToNext active={active} />
+				{symbols.map((symbol, index) => (
+					<div
+						key={index}
+						className={`absolute -z-3 ${symbol.css}`}
+					>
+						<Image
+							src={symbol.img}
+							alt="symbol"
+						/>
+					</div>
+				))}
+				<div className="container mx-auto lg:py-36 xl:px-28 flex relative z-10">
+					<div className="lg:grid lg:grid-cols-6 flex flex-col rounded-xl p-4 lg:gap-10 gap-4">
+						<div className="col-span-2 flex lg:justify-end justify-center">
+							<Image
+								src={avatar}
+								alt="avatar"
+								className="rounded-full"
+							/>
+						</div>
+						<div className="col-span-4 flex flex-col justify-center gap-2 lg:gap-0">
+							<div className="lg:text-5xl text-3xl font-bold text-center lg:text-left">
+								{t.sections.about.title}
+							</div>
+							<p className="font-normal text-center lg:text-left">{t.sections.about.description}</p>
+						</div>
+					</div>
+				</div>
+				<div className="flex justify-center lg:pt-40 pb-16">
+					<ToNext active={active} />
+				</div>
 			</section>
 			<section
 				id="technologies"
 				ref={(el) => (refs.current[2] = el)}
-				className="from-zinc-100 to-zinc-200  dark:from-zinc-900 dark:to-zinc-800 bg-gradient-to-b md:py-24 py-8 relative z-[1]"
+				className="from-zinc-100 to-zinc-50 dark:from-zinc-900 dark:to-zinc-800 bg-gradient-to-b md:py-24 py-8 relative z-[1] min-h-screen"
 			>
-				<div className="container mx-auto px-4 flex flex-col md:gap-12 gap-8 justify-center items-center">
+				<div className="container mx-auto md:px-8 px-4 flex flex-col md:gap-12 gap-8 justify-center items-center">
 					<div className="text-center">
-						<div className="text-5xl font-bold">{t.menu.technologies}</div>
+						<div className="md:text-5xl text-3xl font-bold">{t.menu.technologies}</div>
 						<div className="font-light">{t.sections.technologies.description}</div>
 					</div>
 					<div className="w-full flex flex-col gap-2">
@@ -146,12 +196,12 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 								<div
 									key={index}
 									className={`btn-active cursor-pointer select-none ${
-										tech.includes(category) ? 'active' : ''
+										techFilter.includes(category) ? 'active' : ''
 									}`}
 									onClick={() => {
-										tech.includes(category)
-											? setTech(tech.filter((c) => c != category))
-											: setTech([...tech, category]);
+										techFilter.includes(category)
+											? setTechFilter(techFilter.filter((c) => c != category))
+											: setTechFilter([...techFilter, category]);
 									}}
 								>
 									{t.sections.technologies[category as keyof typeof t.sections.technologies]}
@@ -161,7 +211,7 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 								type="button"
 								title="Reset"
 								className="dark:hover:bg-blue-600 hover:bg-amber-400 rounded inline-flex cursor-pointer select-none px-2"
-								onClick={() => setTech([])}
+								onClick={() => setTechFilter([])}
 							>
 								<XMarkIcon className="w-6" />
 							</button>
@@ -171,7 +221,7 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 							className="grid grid-cols-layout grid-rows-layout md:gap-4 gap-2 grid-flow-dense"
 						>
 							{items
-								.filter((item) => tech.every((i) => item.type.includes(i)))
+								.filter((item) => techFilter.every((i) => item.type.includes(i)))
 								.map((item) => (
 									<div
 										key={item.name}
@@ -195,10 +245,52 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 			<section
 				id="projects"
 				ref={(el) => (refs.current[3] = el)}
-				className="animate-fadeIn min-h-screen bg-zinc-100 dark:bg-zinc-800 flex justify-center items-center"
+				className="min-h-screen from-zinc-50 to-zinc-100 bg-gradient-to-b dark:from-zinc-800 dark:to-zinc-900 py-16"
 			>
-				projects
-				<ToNext active={active} />
+				<div className="container mx-auto flex flex-col lg:gap-16 gap-4 items-center lg:px-16 px-4">
+					<div className="text-center">
+						<div className="md:text-5xl text-3xl font-bold">{t.menu.projects}</div>
+						<div className="font-light md:mt-1">{t.sections.projects.description}</div>
+					</div>
+					<div className="flex flex-col lg:gap-16 gap-6">
+						<ProjectCard
+							title="Spotter"
+							description={t.sections.projects.spotterDescription}
+							image={project0}
+							url="https://spotterv1.onrender.com/"
+							git="https://github.com/MaciejPel/spotterv1"
+							badges={Object.values(technologies)
+								.filter((item) => item.usage.includes('spotter'))
+								.map((item, index) => (
+									<Badge
+										key={index}
+										title={item.name}
+										icon={item.img}
+									/>
+								))}
+						/>
+						<ProjectCard
+							title="StorageBox"
+							description={t.sections.projects.storageBoxDescription}
+							image={project1}
+							url="https://storage-box-pub.vercel.app/"
+							git="https://github.com/MaciejPel/storageBoxV1"
+							badges={Object.values(technologies)
+								.filter((item) => item.usage.includes('storagebox'))
+								.map((item, index) => (
+									<Badge
+										key={index}
+										title={item.name}
+										icon={item.img}
+									/>
+								))}
+							reversed={true}
+						/>
+					</div>
+				</div>
+				<div className="flex justify-center py-24">
+					<ToNext active={active} />
+				</div>
 			</section>
 			<section
 				id="mile-steps"

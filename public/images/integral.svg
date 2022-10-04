@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="25.60322mm"
+   height="50.928806mm"
+   viewBox="0 0 25.60322 50.928806"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <rect
+       x="70.397469"
+       y="304.62906"
+       width="629.73737"
+       height="259.83066"
+       id="rect113" />
+    <rect
+       x="70.397469"
+       y="304.62906"
+       width="629.73737"
+       height="259.83066"
+       id="rect279" />
+    <filter
+       style="color-interpolation-filters:sRGB"
+       id="filter1434"
+       x="-0.22894976"
+       y="-0.09375155"
+       width="1.4578995"
+       height="1.1875031">
+      <feGaussianBlur
+         stdDeviation="6.3318916"
+         id="feGaussianBlur1436" />
+    </filter>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-3.7841695,-3.7370713)">
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-11.168598,-83.458314)"
+       id="text277"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:192px;font-family:Calibri;-inkscape-font-specification:'Calibri Bold';white-space:pre;shape-inside:url(#rect279);display:inline;mix-blend-mode:normal;fill:#ff6600;filter:url(#filter1434)"><tspan
+         x="70.398438"
+         y="472.62891"
+         id="tspan703">∫</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-11.168598,-83.458314)"
+       id="text111"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:192px;font-family:Calibri;-inkscape-font-specification:'Calibri Bold';white-space:pre;shape-inside:url(#rect113);display:inline;fill:#ff6600"><tspan
+         x="70.398438"
+         y="472.62891"
+         id="tspan705">∫</tspan></text>
+  </g>
+</svg>
