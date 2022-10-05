@@ -11,7 +11,9 @@ const Layout: React.FC<{ children: React.ReactElement }> = ({ children }) => {
 		<>
 			<Meta />
 			<Header active={active} />
-			<main>{React.cloneElement(children, { active, setActive })}</main>
+			<main className="bg-gradient-to-b dark:from-black dark:to-zinc-900 from-white to-zinc-100">
+				{React.cloneElement(children, { active, setActive })}
+			</main>
 			<Footer />
 			<ToTop />
 		</>

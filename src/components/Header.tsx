@@ -89,7 +89,7 @@ const Header: React.FC<{ active: string }> = ({ active }) => {
 			</Drawer>
 			<header
 				className={`fixed top-0 z-20 flex w-full justify-center animate-slideInTop transition-header duration-100 ${
-					scrollY > 50 ? 'bg-zinc-50 dark:bg-zinc-900 shadow-md h-20' : 'h-28'
+					scrollY > 50 ? 'bg-zinc-50 dark:bg-zinc-800 shadow-md h-20' : 'h-28'
 				}`}
 			>
 				<nav className="flex items-center p-2 min-h-[4rem] w-full">

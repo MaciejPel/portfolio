@@ -9,6 +9,7 @@ export const pl = {
 		technologies: 'Technologie',
 		projects: 'Projekty',
 		'mile-steps': 'Moja droga',
+		contact: 'Dzięki za przewinięcie!',
 	},
 	themes: {
 		light: 'Jasny',
@@ -42,6 +43,14 @@ export const pl = {
 			storageBoxDescription:
 				"Aplikacja przypominająca media społecznościowe, służąca do przesyłania, kompresji, grupowania i tagowania mediów. Użytkownik może przeglądać obiekty, media, tagi i innych użytkowników oraz like'ować media. Do magazynowania użyłem BunnyCDN.",
 		},
+		'mile-steps': {},
+		contact: {
+			title: 'Kontakt',
+			name: 'Imię',
+			email: 'Adres email',
+			message: 'Wiadomość',
+			submit: 'Wyślij',
+		},
 	},
 	copyright: 'Wszystkie prawa zastrzeżone.',
 };
@@ -54,6 +63,7 @@ export const en = {
 		technologies: 'Technologies',
 		projects: 'Projects',
 		'mile-steps': 'Mile steps',
+		contact: 'Thanks for scrolling!',
 	},
 	themes: {
 		light: 'Light',
@@ -86,6 +96,15 @@ export const en = {
 				'A web app for visualizing personalized Spotify data. View your top tracks, artists and genres in different time spans. Background colors change depending on currently played album cover.',
 			storageBoxDescription:
 				"A social media like app for uploading, compressing, grouping and tagging media . User can browse through objects, single media, tags, other users, and like media as well. I've used BunnyCDN for media storage.",
+		},
+		'mile-steps': {},
+		contact: {
+			title: 'Contact',
+			name: 'Name',
+			email: 'Email',
+			message: 'Message',
+			submit: 'Submit',
+			contact: 'Thanks for scrolling!',
 		},
 	},
 	copyright: 'All rights reserved.',

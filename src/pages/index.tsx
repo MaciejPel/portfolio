@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -7,8 +7,9 @@ import autoAnimate from '@formkit/auto-animate';
 import { en, pl } from '../utils/translation';
 import { technologies, technologyCategories, TypeUnion } from '../utils/constants';
 import Typewriter from 'typewriter-effect';
-import { ArrowTopRightOnSquareIcon, XMarkIcon } from '@heroicons/react/24/solid';
+import { ChevronRightIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import ToNext from '../components/ToNext';
+import ProjectCard from '../components/ProjectCard';
 import bg from '../../public/images/bg.svg';
 import bgMobile from '../../public/images/bg-mobile.svg';
 import avatar from '../../public/images/avatar.jpg';
@@ -27,7 +28,6 @@ import integral from '../../public/images/integral.svg';
 import project0 from '../../public/images/project0.jpeg';
 import project1 from '../../public/images/project1.jpeg';
 import Badge from '../components/Badge';
-import ProjectCard from '../components/ProjectCard';
 
 const blobs = [
 	{
@@ -70,6 +70,10 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 	);
 	const [techFilter, setTechFilter] = useState<TypeUnion[]>([]);
 
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+	};
+
 	useEffect(() => {
 		parent.current && autoAnimate(parent.current);
 	}, [parent]);
@@ -89,7 +93,7 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 			<section
 				id="home"
 				ref={(el) => (refs.current[0] = el)}
-				className="animate-fadeIn min-h-screen bg-white dark:bg-black flex flex-col justify-center items-center relative z-10"
+				className="animate-fadeIn min-h-screen flex flex-col justify-center items-center relative z-10"
 			>
 				{blobs.map((blob, index) => (
 					<div
@@ -139,14 +143,13 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 						/>
 					</div>
 				</div>
-				<div className="absolute bottom-5">
+				<div className="absolute bottom-10">
 					<ToNext active={active} />
 				</div>
 			</section>
 			<section
 				id="about"
 				ref={(el) => (refs.current[1] = el)}
-				className="from-white to-zinc-100 dark:from-black dark:to-zinc-900 bg-gradient-to-b"
 			>
 				{symbols.map((symbol, index) => (
 					<div
@@ -176,14 +179,14 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 						</div>
 					</div>
 				</div>
-				<div className="flex justify-center lg:pt-40 pb-16">
+				<div className="flex justify-center lg:pt-40">
 					<ToNext active={active} />
 				</div>
 			</section>
 			<section
 				id="technologies"
 				ref={(el) => (refs.current[2] = el)}
-				className="from-zinc-100 to-zinc-50 dark:from-zinc-900 dark:to-zinc-800 bg-gradient-to-b md:py-24 py-8 relative z-[1] min-h-screen"
+				className="md:py-24 py-8 relative z-[1]"
 			>
 				<div className="container mx-auto md:px-8 px-4 flex flex-col md:gap-12 gap-8 justify-center items-center">
 					<div className="text-center">
@@ -245,7 +248,7 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 			<section
 				id="projects"
 				ref={(el) => (refs.current[3] = el)}
-				className="min-h-screen from-zinc-50 to-zinc-100 bg-gradient-to-b dark:from-zinc-800 dark:to-zinc-900 py-16"
+				className="py-16"
 			>
 				<div className="container mx-auto flex flex-col lg:gap-16 gap-4 items-center lg:px-16 px-4">
 					<div className="text-center">
@@ -295,16 +298,100 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 			<section
 				id="mile-steps"
 				ref={(el) => (refs.current[4] = el)}
-				className="animate-fadeIn min-h-screen bg-zinc-100 dark:bg-zinc-800 flex justify-center items-center"
+				className="py-24"
 			>
-				mile-steps
-				<ToNext active={active} />
+				<div className="lg:text-5xl font-bold text-3xl mb-2 text-center">
+					{t.menu['mile-steps']}
+				</div>
+				<div className="container mx-auto	px-8 py-24">
+					<div>
+						<div className="grid md:grid-cols-11 grid-rows-5 md:grid-rows-none">
+							<div className="md:col-span-2 row-span-1 text-center">
+								<div>2018</div>
+								<div>Description</div>
+							</div>
+							<div className="flex items-center md:col-span-1 row-span-1 justify-center">
+								<ChevronRightIcon className="w-6 md:rotate-0 rotate-90" />
+							</div>
+							<div className="md:col-span-2 row-span-1 text-center">
+								<div>2020</div>
+								<div>Description</div>
+							</div>
+							<div className="flex items-center md:col-span-1 row-span-1 justify-center">
+								<ChevronRightIcon className="w-6 md:rotate-0 rotate-90" />
+							</div>
+							<div className="md:col-span-2 grid-rows-1 text-center">
+								<div>2021</div>
+								<div>Description</div>
+							</div>
+							<div className="flex items-center md:col-span-1 row-span-1 justify-center">
+								<ChevronRightIcon className="w-6 md:rotate-0 rotate-90" />
+							</div>
+							<div className="md:col-span-2 grid-rows-1 text-center">
+								<div>2022</div>
+								<div>Description</div>
+							</div>
+						</div>
+					</div>
+					<div className="flex justify-center w-full py-24">
+						<ToNext active={active} />
+					</div>
+				</div>
 			</section>
 			<section
 				id="contact"
-				className="animate-fadeIn min-h-[60vh] bg-zinc-100 dark:bg-zinc-800 flex justify-center items-center"
+				ref={(el) => (refs.current[5] = el)}
+				className="md:py-16 py-2"
 			>
-				contact
+				<div className="container mx-auto 2xl:px-96 xl:px-64 lg:px-24 md:px-8 p-4">
+					<div className="lg:text-5xl font-bold text-3xl mb-2">{t.sections.contact.title}</div>
+					<form
+						className="flex justify-center flex-col gap-4"
+						onSubmit={handleSubmit}
+					>
+						<div className="flex gap-4 md:flex-row flex-col">
+							<input
+								type="text"
+								placeholder={t.sections.contact.name}
+								id="name"
+								name="name"
+								autoComplete="off"
+								className="w-full p-4 rounded outline-none shadow bg-white dark:bg-stone-700"
+							/>
+							<input
+								type="email"
+								placeholder={t.sections.contact.email}
+								id="email"
+								name="email"
+								autoComplete="off"
+								className="w-full p-4 rounded outline-none shadow bg-white dark:bg-stone-700"
+							/>
+						</div>
+						<div className="flex">
+							<textarea
+								placeholder={t.sections.contact.message}
+								id="message"
+								name="message"
+								rows={8}
+								className="w-full p-4 rounded outline-none shadow resize-none bg-white dark:bg-stone-700"
+							/>
+						</div>
+						<div className="flex justify-between">
+							<div
+								className={`px-4 py-2 rounded shadow hover:bg-red-500 transition-colors bg-white dark:bg-stone-700 ${
+									false ? 'cursor-pointer' : 'opacity-0 cursor-auto select-none'
+								}`}
+							>
+								Error message
+							</div>
+							<input
+								type="submit"
+								value={t.sections.contact.submit}
+								className="px-4 py-2 rounded shadow cursor-pointer transition-colors hover:bg-amber-400 dark:hover:bg-blue-600 bg-white dark:bg-stone-700"
+							/>
+						</div>
+					</form>
+				</div>
 			</section>
 		</>
 	);
