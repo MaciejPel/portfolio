@@ -8,9 +8,9 @@ const Footer: React.FC = () => {
 	return (
 		<footer
 			id="footer"
-			className="bg-zinc-50 dark:bg-zinc-800 h-16"
+			className="bg-zinc-50 dark:bg-zinc-900 h-16"
 		>
-			<div className="container mx-auto md:px-20 w-full flex md:justify-end justify-center items-center h-full md:gap-1 flex-col md:flex-row">
+			<div className="container mx-auto md:px-20 w-full flex justify-center items-center h-full md:gap-1 flex-col md:flex-row">
 				<div>
 					&copy;
 					<a

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -7,9 +7,12 @@ import autoAnimate from '@formkit/auto-animate';
 import { en, pl } from '../utils/translation';
 import { technologies, technologyCategories, TypeUnion } from '../utils/constants';
 import Typewriter from 'typewriter-effect';
+import emailjs from '@emailjs/browser';
 import { ChevronRightIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import ToNext from '../components/ToNext';
 import ProjectCard from '../components/ProjectCard';
+import Badge from '../components/Badge';
+import Step from '../components/Step';
 import bg from '../../public/images/bg.svg';
 import bgMobile from '../../public/images/bg-mobile.svg';
 import avatar from '../../public/images/avatar.jpg';
@@ -27,7 +30,6 @@ import square from '../../public/images/square.svg';
 import integral from '../../public/images/integral.svg';
 import project0 from '../../public/images/project0.jpeg';
 import project1 from '../../public/images/project1.jpeg';
-import Badge from '../components/Badge';
 
 const blobs = [
 	{
@@ -45,14 +47,6 @@ const blobs = [
 	},
 ];
 
-const symbols = [
-	{ img: sigma, css: 'w-24 h-24 lg:block hidden -z-3 left-[5%] top-[125%] -rotate-45' },
-	{ img: triangle, css: 'w-40 h-40 lg:block hidden -z-3 left-[22%] top-[148%] rotate-12' },
-	{ img: circle, css: 'w-40 h-40 lg:block hidden -z-3 left-[70%] top-[148%]' },
-	{ img: square, css: 'w-40 h-40 lg:block hidden -z-3 left-[46%] top-[155%] rotate-[250deg]' },
-	{ img: integral, css: 'w-20 h-20 lg:block hidden -z-3 left-[90%] top-[125%] rotate-12' },
-];
-
 interface IndexProps {
 	active: string;
 	setActive: React.Dispatch<React.SetStateAction<string>>;
@@ -62,27 +56,65 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 	const { locale } = useRouter();
 	const t = locale === 'en' ? en : pl;
 	const { scrollY } = useScroll();
-	const refs = useRef<HTMLElement[] | null[]>([]);
 
-	const parent = useRef(null);
-	const [items] = useState(
+	const sectionRefs = useRef<HTMLElement[] | null[]>([]);
+	const contactForm = useRef<HTMLFormElement | null>(null);
+	const animationParent = useRef(null);
+
+	const [contactState, setContactState] = useState({
+		error: false,
+		success: false,
+		form: { name: '', email: '', message: '' },
+	});
+	const [techItems] = useState(
 		Object.values(technologies).filter((item) => item.usage.includes('technologies'))
 	);
 	const [techFilter, setTechFilter] = useState<TypeUnion[]>([]);
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		const serviceId = process.env.NEXT_PUBLIC_SERVICE_ID,
+			templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID,
+			publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY;
+
+		if (!contactForm || !serviceId || !templateId || !publicKey) {
+			setContactState({ ...contactState, error: true });
+			return;
+		}
+		emailjs.sendForm(serviceId, templateId, contactForm.current as HTMLFormElement, publicKey).then(
+			(res) => {
+				setContactState({
+					...contactState,
+					success: true,
+					form: { name: '', email: '', message: '' },
+				});
+			},
+			(err) => {
+				setContactState({ ...contactState, error: true });
+			}
+		);
 	};
 
+	const symbols = [
+		{ img: sigma, css: 'w-24 h-24 lg:block hidden -z-3 left-[5%] top-[125%] -rotate-45' },
+		{ img: triangle, css: 'w-40 h-40 lg:block hidden -z-3 left-[22%] top-[148%] rotate-12' },
+		{ img: circle, css: 'w-40 h-40 lg:block hidden -z-3 left-[70%] top-[148%]' },
+		{ img: square, css: 'w-40 h-40 lg:block hidden -z-3 left-[46%] top-[155%] rotate-[250deg]' },
+		{
+			img: integral,
+			css: `w-20 h-20 lg:block hidden -z-3 left-[90%] top-[125%] rotate-12`,
+		},
+	];
+
 	useEffect(() => {
-		parent.current && autoAnimate(parent.current);
-	}, [parent]);
+		animationParent.current && autoAnimate(animationParent.current);
+	}, [animationParent]);
 
 	useEffect(() => {
 		let lowestDiff: [string, number] = ['home', 10000];
-		refs.current.forEach((item) => {
+		sectionRefs.current.forEach((item) => {
 			if (item && Math.abs(item.offsetTop - scrollY) < lowestDiff[1]) {
-				lowestDiff = [item.id, Math.abs(item.offsetTop - window.scrollY)];
+				lowestDiff = [item.id, Math.abs(item.offsetTop + 250 - window.scrollY)];
 			}
 		});
 		setActive(lowestDiff[0]);
@@ -92,7 +124,7 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 		<>
 			<section
 				id="home"
-				ref={(el) => (refs.current[0] = el)}
+				ref={(el) => (sectionRefs.current[0] = el)}
 				className="animate-fadeIn min-h-screen flex flex-col justify-center items-center relative z-10"
 			>
 				{blobs.map((blob, index) => (
@@ -149,7 +181,7 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 			</section>
 			<section
 				id="about"
-				ref={(el) => (refs.current[1] = el)}
+				ref={(el) => (sectionRefs.current[1] = el)}
 			>
 				{symbols.map((symbol, index) => (
 					<div
@@ -185,7 +217,7 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 			</section>
 			<section
 				id="technologies"
-				ref={(el) => (refs.current[2] = el)}
+				ref={(el) => (sectionRefs.current[2] = el)}
 				className="md:py-24 py-8 relative z-[1]"
 			>
 				<div className="container mx-auto md:px-8 px-4 flex flex-col md:gap-12 gap-8 justify-center items-center">
@@ -220,10 +252,10 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 							</button>
 						</div>
 						<div
-							ref={parent}
+							ref={animationParent}
 							className="grid grid-cols-layout grid-rows-layout md:gap-4 gap-2 grid-flow-dense"
 						>
-							{items
+							{techItems
 								.filter((item) => techFilter.every((i) => item.type.includes(i)))
 								.map((item) => (
 									<div
@@ -247,10 +279,10 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 			</section>
 			<section
 				id="projects"
-				ref={(el) => (refs.current[3] = el)}
-				className="py-16"
+				ref={(el) => (sectionRefs.current[3] = el)}
+				className="md:py-16 py-8"
 			>
-				<div className="container mx-auto flex flex-col lg:gap-16 gap-4 items-center lg:px-16 px-4">
+				<div className="container mx-auto flex flex-col lg:gap-12 gap-4 items-center lg:px-12 px-4">
 					<div className="text-center">
 						<div className="md:text-5xl text-3xl font-bold">{t.menu.projects}</div>
 						<div className="font-light md:mt-1">{t.sections.projects.description}</div>
@@ -291,61 +323,68 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 						/>
 					</div>
 				</div>
-				<div className="flex justify-center py-24">
+				<div className="flex justify-center md:py-12 py-4">
 					<ToNext active={active} />
 				</div>
 			</section>
 			<section
 				id="mile-steps"
-				ref={(el) => (refs.current[4] = el)}
-				className="py-24"
+				ref={(el) => (sectionRefs.current[4] = el)}
+				className="md:py-20 py-4"
 			>
 				<div className="lg:text-5xl font-bold text-3xl mb-2 text-center">
 					{t.menu['mile-steps']}
 				</div>
-				<div className="container mx-auto	px-8 py-24">
+				<div className="container mx-auto lg:px-8	px-16 lg:py-12 py-2">
 					<div>
-						<div className="grid md:grid-cols-11 grid-rows-5 md:grid-rows-none">
-							<div className="md:col-span-2 row-span-1 text-center">
-								<div>2018</div>
-								<div>Description</div>
+						<div className="grid lg:grid-cols-11 grid-rows-stepsLayout lg:grid-rows-none lg:gap-0 gap-2">
+							<Step
+								year={t.sections['mile-steps'].beginning.year}
+								title={t.sections['mile-steps'].beginning.title}
+								description={t.sections['mile-steps'].beginning.description}
+							/>
+							<div className="flex items-center lg:col-span-1 row-span-1 justify-center">
+								<ChevronRightIcon className="w-8 lg:rotate-0 rotate-90" />
 							</div>
-							<div className="flex items-center md:col-span-1 row-span-1 justify-center">
-								<ChevronRightIcon className="w-6 md:rotate-0 rotate-90" />
+							<Step
+								year={t.sections['mile-steps'].birrt.year}
+								title={t.sections['mile-steps'].birrt.title}
+								description={t.sections['mile-steps'].birrt.description}
+							/>
+							<div className="flex items-center lg:col-span-1 row-span-1 justify-center">
+								<ChevronRightIcon className="w-8 lg:rotate-0 rotate-90" />
 							</div>
-							<div className="md:col-span-2 row-span-1 text-center">
-								<div>2020</div>
-								<div>Description</div>
+							<Step
+								year={t.sections['mile-steps'].br.year}
+								title={t.sections['mile-steps'].br.title}
+								description={t.sections['mile-steps'].br.description}
+							/>
+							<div className="flex items-center lg:col-span-1 row-span-1 justify-center">
+								<ChevronRightIcon className="w-8 lg:rotate-0 rotate-90" />
 							</div>
-							<div className="flex items-center md:col-span-1 row-span-1 justify-center">
-								<ChevronRightIcon className="w-6 md:rotate-0 rotate-90" />
-							</div>
-							<div className="md:col-span-2 grid-rows-1 text-center">
-								<div>2021</div>
-								<div>Description</div>
-							</div>
-							<div className="flex items-center md:col-span-1 row-span-1 justify-center">
-								<ChevronRightIcon className="w-6 md:rotate-0 rotate-90" />
-							</div>
-							<div className="md:col-span-2 grid-rows-1 text-center">
-								<div>2022</div>
-								<div>Description</div>
-							</div>
+							<Step
+								year={t.sections['mile-steps'].solo.year}
+								title={t.sections['mile-steps'].solo.title}
+								description={t.sections['mile-steps'].solo.description}
+							/>
 						</div>
 					</div>
-					<div className="flex justify-center w-full py-24">
-						<ToNext active={active} />
+					<div className="flex flex-col items-center text-2xl font-medium pt-12">
+						<div>That would be all</div>
+						<div>Thanks for scrolling</div>
+						🤗
 					</div>
 				</div>
 			</section>
 			<section
 				id="contact"
-				ref={(el) => (refs.current[5] = el)}
-				className="md:py-16 py-2"
+				ref={(el) => (sectionRefs.current[5] = el)}
+				className="md:py-4 py-2 dark:bg-zinc-800 bg-zinc-200"
 			>
 				<div className="container mx-auto 2xl:px-96 xl:px-64 lg:px-24 md:px-8 p-4">
 					<div className="lg:text-5xl font-bold text-3xl mb-2">{t.sections.contact.title}</div>
 					<form
+						ref={contactForm}
 						className="flex justify-center flex-col gap-4"
 						onSubmit={handleSubmit}
 					>
@@ -356,7 +395,14 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 								id="name"
 								name="name"
 								autoComplete="off"
-								className="w-full p-4 rounded outline-none shadow bg-white dark:bg-stone-700"
+								className="w-full p-4 rounded outline-none shadow bg-zinc-50 focus:bg-white dark:bg-zinc-700 dark:focus:bg-zinc-600"
+								required={true}
+								onChange={(e) =>
+									setContactState({
+										...contactState,
+										form: { ...contactState.form, name: e.target.value },
+									})
+								}
 							/>
 							<input
 								type="email"
@@ -364,7 +410,14 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 								id="email"
 								name="email"
 								autoComplete="off"
-								className="w-full p-4 rounded outline-none shadow bg-white dark:bg-stone-700"
+								className="w-full p-4 rounded outline-none shadow bg-zinc-50 focus:bg-white dark:bg-zinc-700 dark:focus:bg-zinc-600"
+								required={true}
+								onChange={(e) =>
+									setContactState({
+										...contactState,
+										form: { ...contactState.form, email: e.target.value },
+									})
+								}
 							/>
 						</div>
 						<div className="flex">
@@ -373,21 +426,36 @@ const Index: NextPage<IndexProps> = ({ active, setActive }) => {
 								id="message"
 								name="message"
 								rows={8}
-								className="w-full p-4 rounded outline-none shadow resize-none bg-white dark:bg-stone-700"
+								className="w-full p-4 rounded outline-none shadow resize-none bg-zinc-50 focus:bg-white dark:bg-zinc-700 dark:focus:bg-zinc-600"
+								required={true}
+								onChange={(e) =>
+									setContactState({
+										...contactState,
+										form: { ...contactState.form, message: e.target.value },
+									})
+								}
 							/>
 						</div>
-						<div className="flex justify-between">
+						<div className="flex justify-between md:flex-row flex-col gap-4">
 							<div
-								className={`px-4 py-2 rounded shadow hover:bg-red-500 transition-colors bg-white dark:bg-stone-700 ${
-									false ? 'cursor-pointer' : 'opacity-0 cursor-auto select-none'
+								className={`px-4 py-2 rounded shadow font-medium text-center ${
+									contactState.error ? 'block cursor-pointer bg-red-400 hover:bg-red-500' : ''
+								} ${
+									contactState.success ? 'block cursor-pointer bg-green-500 hover:bg-green-600' : ''
+								} ${
+									!contactState.error && !contactState.success
+										? 'opacity-0 md:block hidden cursor-auto select-none'
+										: ''
 								}`}
+								onClick={() => setContactState({ ...contactState, error: false, success: false })}
 							>
-								Error message
+								{contactState.error && t.sections.contact.error}
+								{contactState.success && t.sections.contact.success}
 							</div>
 							<input
 								type="submit"
 								value={t.sections.contact.submit}
-								className="px-4 py-2 rounded shadow cursor-pointer transition-colors hover:bg-amber-400 dark:hover:bg-blue-600 bg-white dark:bg-stone-700"
+								className="px-4 py-2 rounded shadow cursor-pointer hover:bg-amber-400 dark:hover:bg-blue-600 bg-zinc-50 dark:bg-zinc-700 font-medium"
 							/>
 						</div>
 					</form>

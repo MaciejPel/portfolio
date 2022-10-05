@@ -13,6 +13,7 @@ module.exports = {
 			},
 			gridTemplateRows: {
 				layout: 'repeat(auto-fill, minmax(230px, 1fr))',
+				stepsLayout: '1fr auto 1fr auto 1fr auto 1fr',
 			},
 			keyframes: {
 				slideInTop: {
@@ -23,6 +24,14 @@ module.exports = {
 				fadeIn: {
 					'0%, 50%': { opacity: '0;' },
 					'100%': { opacity: '1;' },
+				},
+				fadeInRight: {
+					'0%': { opacity: '0;', transform: 'translateX(100%)' },
+					'100%': { opacity: '1;', transform: 'translateX(0)' },
+				},
+				fadeInLeft: {
+					'0%': { opacity: '0;', transform: 'translateX(-100%)' },
+					'100%': { opacity: '1;', transform: 'translateX(0)' },
 				},
 				spinSlow: {
 					'0%': { transform: 'rotate(0);' },
@@ -46,6 +55,9 @@ module.exports = {
 			animation: {
 				slideInTop: 'slideInTop .5s ease-in-out',
 				fadeIn: 'fadeIn 1.5s ease-in-out',
+				fadeInFast: 'fadeIn .5s ease',
+				fadeInRight: 'fadeInRight .5s ease',
+				fadeInLeft: 'fadeInLeft .5s ease',
 				spinSlow: 'spinSlow 20s linear infinite',
 				spinSlowInfinite: 'spinSlowInfinite 20s ease infinite',
 				spinSlowInfiniteReverse: 'spinSlow 8s ease infinite',

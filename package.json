@@ -10,12 +10,14 @@
 		"styles": "npx tailwindcss -o ./src/styles/index.css --minify"
 	},
 	"dependencies": {
+		"@emailjs/browser": "^3.7.0",
 		"@formkit/auto-animate": "^1.0.0-beta.3",
 		"@heroicons/react": "^2.0.11",
 		"next": "12.3.1",
 		"next-themes": "^0.2.1",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
+		"react-intersection-observer": "^9.4.0",
 		"sharp": "^0.31.1",
 		"typewriter-effect": "^2.19.0"
 	},

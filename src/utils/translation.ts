@@ -43,12 +43,39 @@ export const pl = {
 			storageBoxDescription:
 				"Aplikacja przypominająca media społecznościowe, służąca do przesyłania, kompresji, grupowania i tagowania mediów. Użytkownik może przeglądać obiekty, media, tagi i innych użytkowników oraz like'ować media. Do magazynowania użyłem BunnyCDN.",
 		},
-		'mile-steps': {},
+		'mile-steps': {
+			beginning: {
+				year: '2018',
+				title: 'Jakoś trzeba zacząć',
+				description:
+					'Mój pierwszy samodzielnie napisany plik HTML! Niedługo potem nauczyłem się także CSS, vanilla JS i PHP.',
+			},
+			birrt: {
+				year: '2020',
+				title: 'Birrt',
+				description:
+					'Projektowanie CRM z użyciem PHP i MySql, naprawianie istniejących problemów, tworzenie raportów i monitorowanie infrastrktury.',
+			},
+			br: {
+				year: '2021',
+				title: 'Best-Review',
+				description:
+					'Projektowanie szablonów i stron z wykorzystaniem Wordpress, PHP, React. Zarządzanie bazami danych. Modyfikowanie interakcji użytkownika z systemami płatności.',
+			},
+			solo: {
+				year: '2022',
+				title: 'Realizacja własnych pomysłów',
+				description:
+					'Skupiam się na programowaniu aplikacji, które chodziły mi po głowie od dłużeszego czasu. Rezultat możesz sprawdzić powyżej.',
+			},
+		},
 		contact: {
 			title: 'Kontakt',
 			name: 'Imię',
 			email: 'Adres email',
 			message: 'Wiadomość',
+			error: '😱 Coś poszło nie tak',
+			success: '😍 Wiadomość dostarczona',
 			submit: 'Wyślij',
 		},
 	},
@@ -95,15 +122,42 @@ export const en = {
 			spotterDescription:
 				'A web app for visualizing personalized Spotify data. View your top tracks, artists and genres in different time spans. Background colors change depending on currently played album cover.',
 			storageBoxDescription:
-				"A social media like app for uploading, compressing, grouping and tagging media . User can browse through objects, single media, tags, other users, and like media as well. I've used BunnyCDN for media storage.",
+				"A social media like app for uploading, compressing, grouping and tagging media. User can browse through objects, single media, tags, other users, and like media as well. I've used BunnyCDN for media storage.",
 		},
-		'mile-steps': {},
+		'mile-steps': {
+			beginning: {
+				year: '2018',
+				title: 'You gotta start somehow',
+				description:
+					"My very first self-made HTML file! I've also learned CSS, vanilla JS and PHP shortly after.",
+			},
+			birrt: {
+				year: '2020',
+				title: 'Birrt',
+				description:
+					'Design of CRM systems using PHP and MySql. Fixing existing bugs, reporting progress and monitoring infrastructure.',
+			},
+			br: {
+				year: '2021',
+				title: 'Best-Review',
+				description:
+					'Template and page design using Wordpress, PHP, React. Databases management. Modifying user interaction with payment systems.',
+			},
+			solo: {
+				year: '2022',
+				title: 'Finishing my own projects',
+				description:
+					'Focusing on ideas that I had in my mind for a long time. You could see results above.',
+			},
+		},
 		contact: {
 			title: 'Contact',
 			name: 'Name',
 			email: 'Email',
 			message: 'Message',
 			submit: 'Submit',
+			error: '😱 Something went wrong',
+			success: '😍 Message has been delivered',
 			contact: 'Thanks for scrolling!',
 		},
 	},
