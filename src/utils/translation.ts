@@ -108,7 +108,7 @@ export const en = {
 		about: {
 			title: 'About me',
 			description:
-				"Hi, my name is Maciej Pełczyński. I am 22 years old, and I am dealing with programming pages- I prefer Frontend, however in my projects I've had to take care of user security and data integrality on multiple occasions, so I jump on the Backend from time to time. I am a graduate of an IT technical school, and I am currently studying computer science at the Poznan University of Technology. In my spare time, I learn about new technologies and do amateur photo and video processing. More about the technologies used and experience you can find out below.",
+				"Hi, my name is Maciej Pełczyński. I am 22 years old, and I am dealing with programming pages- I prefer Frontend, however in my projects I've had to take care of user security and data integrity on multiple occasions, so I jump on the Backend from time to time. I am a graduate of an IT technical school, and I am currently studying computer science at the Poznan University of Technology. In my spare time, I learn about new technologies and do amateur photo and video processing. More about the technologies used and experience you can find out below.",
 		},
 		technologies: {
 			description: "Technologies I'm comfortable to work with",
