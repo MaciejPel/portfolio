@@ -53,8 +53,8 @@ const MileSteps: React.FC<MileStepsProps> = ({ active, setRef }) => {
 					</div>
 				</div>
 				<div className="flex flex-col items-center text-2xl font-medium py-8">
-					<div>That would be all</div>
-					<div>Thanks for scrolling</div>
+					<div>{t.sections['mile-steps'].all}</div>
+					<div>{t.sections['mile-steps'].thanks}</div>
 					🤗
 				</div>
 			</div>

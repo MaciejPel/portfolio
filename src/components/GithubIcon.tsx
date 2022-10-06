@@ -5,7 +5,9 @@ const GithubIcon: React.FC<{ className: string }> = ({ className }) => {
 	const { theme } = useTheme();
 	const [mounted, setMounted] = useState(false);
 
-	useEffect(() => setMounted(true), []);
+	useEffect(() => {
+		if (theme) setMounted(true);
+	}, [theme]);
 	if (!mounted) return null;
 
 	return (

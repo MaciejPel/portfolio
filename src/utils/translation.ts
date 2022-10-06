@@ -68,6 +68,8 @@ export const pl = {
 				description:
 					'Skupiam się na programowaniu aplikacji, które chodziły mi po głowie od dłużeszego czasu. Rezultat możesz sprawdzić powyżej.',
 			},
+			all: 'To na tyle',
+			thanks: 'Dzięki za scrollowanie',
 		},
 		contact: {
 			title: 'Kontakt',
@@ -149,6 +151,8 @@ export const en = {
 				description:
 					'Focusing on ideas that I had in my mind for a long time. You could see results above.',
 			},
+			all: 'That would be all',
+			thanks: 'Thanks for scrolling',
 		},
 		contact: {
 			title: 'Contact',
