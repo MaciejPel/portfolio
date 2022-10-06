@@ -62,7 +62,7 @@ const Projects: React.FC<ProjectsProps> = ({ active, setRef }) => {
 					/>
 				</div>
 			</div>
-			<div className="justify-center md:py-12 py-4 md:flex hidden">
+			<div className="justify-center md:pt-12 md:pb-20 py-4 md:flex hidden">
 				<ToNext active={active} />
 			</div>
 		</section>

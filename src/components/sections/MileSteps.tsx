@@ -17,8 +17,10 @@ const MileSteps: React.FC<MileStepsProps> = ({ active, setRef }) => {
 			id="mile-steps"
 			ref={setRef}
 		>
-			<div className="lg:text-5xl font-bold text-3xl mb-2 text-center">{t.menu['mile-steps']}</div>
-			<div className="container mx-auto lg:px-8	px-16 lg:py-12 py-2">
+			<div className="lg:text-5xl font-bold text-3xl mb-2 text-center pt-4">
+				{t.menu['mile-steps']}
+			</div>
+			<div className="container mx-auto lg:px-8	px-16 lg:pt-12 py-2">
 				<div>
 					<div className="grid lg:grid-cols-11 grid-rows-stepsLayout lg:grid-rows-none lg:gap-0 gap-2">
 						<Step
@@ -52,7 +54,7 @@ const MileSteps: React.FC<MileStepsProps> = ({ active, setRef }) => {
 						/>
 					</div>
 				</div>
-				<div className="flex flex-col items-center text-2xl font-medium py-8">
+				<div className="flex flex-col items-center text-2xl font-medium py-12">
 					<div>{t.sections['mile-steps'].all}</div>
 					<div>{t.sections['mile-steps'].thanks}</div>
 					🤗
