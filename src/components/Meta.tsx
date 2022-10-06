@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-const Meta: React.FC<{ title?: string }> = ({ title = 'Loading...' }) => {
+const Meta: React.FC<{ title?: string }> = ({ title = 'Home' }) => {
 	const titleTag = `${title} | Maciej Pełczyński | Front-End Developer`;
 	return (
 		<Head>
