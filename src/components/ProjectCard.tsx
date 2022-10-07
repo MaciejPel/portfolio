@@ -1,4 +1,5 @@
 import Image, { StaticImageData } from 'next/image';
+import { useInView } from 'react-intersection-observer';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid';
 import GithubIcon from './GithubIcon';
 
@@ -21,11 +22,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 	badges,
 	reversed,
 }) => {
+	const { ref, inView } = useInView();
+
 	return (
 		<div
-			className={`flex ${
-				reversed ? 'lg:flex-row' : 'lg:flex-row-reverse'
-			} flex-col-reverse relative cursor-default`}
+			ref={ref}
+			className={`flex flex-col-reverse relative cursor-default ${
+				reversed
+					? `lg:flex-row ${inView ? 'lg:animate-fadeInLeft' : 'lg:animate-fadeOutLeft'}`
+					: `lg:flex-row-reverse ${inView ? 'lg:animate-fadeInRight' : 'lg:animate-fadeOutRight'}`
+			}`}
 		>
 			<div
 				className={`relative flex flex-col justify-center z-[2] gap-3 text-center ${
