@@ -2,6 +2,7 @@ import Image, { StaticImageData } from 'next/image';
 import { useInView } from 'react-intersection-observer';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid';
 import GithubIcon from './GithubIcon';
+import { useEffect } from 'react';
 
 interface ProjectCardProps {
 	title: string;
@@ -29,8 +30,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 			ref={ref}
 			className={`flex flex-col-reverse relative cursor-default ${
 				reversed
-					? `lg:flex-row ${inView ? 'lg:animate-fadeInLeft' : 'lg:animate-fadeOutLeft'}`
-					: `lg:flex-row-reverse ${inView ? 'lg:animate-fadeInRight' : 'lg:animate-fadeOutRight'}`
+					? `lg:flex-row ${inView ? 'lg:animate-fadeInLeft' : 'lg:opacity-0 lg:-translate-x-full'}`
+					: `lg:flex-row-reverse ${
+							inView ? 'lg:animate-fadeInRight' : 'lg:opacity-0 lg:-translate-x-full'
+					  }`
 			}`}
 		>
 			<div
