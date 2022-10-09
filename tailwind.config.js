@@ -26,24 +26,12 @@ module.exports = {
 					'100%': { opacity: '1;' },
 				},
 				fadeInRight: {
-					'0%': { opacity: '0;', transform: 'translateX(100%)' },
+					'0%': { opacity: '0;', transform: 'translateX(20%)' },
 					'100%': { opacity: '1;', transform: 'translateX(0)' },
-				},
-				fadeOut: {
-					'0%, 50%': { opacity: '1;' },
-					'100%': { opacity: '0;' },
 				},
 				fadeInLeft: {
-					'0%': { opacity: '0;', transform: 'translateX(-100%)' },
+					'0%': { opacity: '0;', transform: 'translateX(-20%)' },
 					'100%': { opacity: '1;', transform: 'translateX(0)' },
-				},
-				fadeOutLeft: {
-					'0%': { opacity: '1;', transform: 'translateX(0)' },
-					'100%': { opacity: '0;', transform: 'translateX(100%)' },
-				},
-				fadeOutRight: {
-					'0%': { opacity: '1;', transform: 'translateX(0)' },
-					'100%': { opacity: '0;', transform: 'translateX(100%)' },
 				},
 				spinSlow: {
 					'0%': { transform: 'rotate(0);' },
@@ -70,9 +58,6 @@ module.exports = {
 				fadeInFast: 'fadeIn .5s ease',
 				fadeInRight: 'fadeInRight .8s ease',
 				fadeInLeft: 'fadeInLeft .8s ease',
-				fadeOutFast: 'fadeOut .5s ease',
-				fadeOutRight: 'fadeOutRight .5s ease',
-				fadeOutLeft: 'fadeOutLeft .5s ease',
 				spinSlow: 'spinSlow 20s linear infinite',
 				spinSlowInfinite: 'spinSlowInfinite 20s ease infinite',
 				spinSlowInfiniteReverse: 'spinSlow 8s ease infinite',

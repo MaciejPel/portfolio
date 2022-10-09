@@ -23,16 +23,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 	badges,
 	reversed,
 }) => {
-	const { ref, inView } = useInView();
+	const { ref, inView, entry } = useInView({ threshold: 0.4 });
 
 	return (
 		<div
 			ref={ref}
-			className={`flex flex-col-reverse relative cursor-default ${
+			className={`flex flex-col-reverse relative cursor-default lg:transition-all lg:duration-[800ms] ${
 				reversed
-					? `lg:flex-row ${inView ? 'lg:animate-fadeInLeft' : 'lg:opacity-0 lg:-translate-x-full'}`
+					? `lg:flex-row ${inView ? 'lg:animate-fadeInLeft' : 'lg:-translate-x-[20%] lg:opacity-0'}`
 					: `lg:flex-row-reverse ${
-							inView ? 'lg:animate-fadeInRight' : 'lg:opacity-0 lg:-translate-x-full'
+							inView ? 'lg:animate-fadeInRight' : 'lg:translate-x-[20%] lg:opacity-0'
 					  }`
 			}`}
 		>
