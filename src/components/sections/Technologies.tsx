@@ -8,6 +8,7 @@ import { XMarkIcon } from '@heroicons/react/24/solid';
 import ToNext from '../ToNext';
 import line1 from '../../../public/images/line1.svg';
 import line2 from '../../../public/images/line2.svg';
+import { useInView } from 'react-intersection-observer';
 
 interface TechnologiesProps {
 	active: string;
@@ -18,6 +19,7 @@ const Technologies: React.FC<TechnologiesProps> = ({ active, setRef }) => {
 	const { locale } = useRouter();
 	const t = locale === 'en' ? en : pl;
 	const animationParent = useRef(null);
+	const { ref, inView } = useInView({ threshold: 0.6 });
 
 	const [techItems] = useState(
 		Object.values(technologies).filter((item) => item.usage.includes('technologies'))
@@ -28,25 +30,42 @@ const Technologies: React.FC<TechnologiesProps> = ({ active, setRef }) => {
 		animationParent.current && autoAnimate(animationParent.current);
 	}, [animationParent]);
 
+	const lines = [
+		{
+			img: line1,
+			css: `top-[77%] left-[-3%] ${
+				inView ? 'lg:animate-fadeInLeft' : 'lg:-translate-x-[20%] lg:opacity-0'
+			}`,
+		},
+		{
+			img: line2,
+			css: `top-[-5%] right-[-3%] ${
+				inView ? 'lg:animate-fadeInRight' : 'lg:translate-x-[20%] lg:opacity-0'
+			}`,
+		},
+	];
+
 	return (
 		<section
 			id="technologies"
 			ref={setRef}
 			className="relative z-[1]"
 		>
-			<div className={`absolute -z-3 lg:block hidden w-[500px] -z-3 top-[77%] left-[-3%]`}>
-				<Image
-					src={line1}
-					alt="line"
-				/>
-			</div>
-			<div className={`absolute -z-3 lg:block hidden w-[500px] -z-3 top-[-5%] right-[-3%]`}>
-				<Image
-					src={line2}
-					alt="line"
-				/>
-			</div>
-			<div className="container mx-auto md:px-8 px-4 flex flex-col lg:gap-12 md:gap-4 gap-2 justify-center items-center md:py-12 py-8 md:mt-0 mt-8">
+			{lines.map((line, index) => (
+				<div
+					key={index}
+					className={`absolute -z-3 lg:block hidden w-[500px] -z-3 lg:transition-all lg:duration-[800ms] ${line.css}`}
+				>
+					<Image
+						src={line.img}
+						alt="line"
+					/>
+				</div>
+			))}
+			<div
+				ref={ref}
+				className="container mx-auto md:px-8 px-4 flex flex-col lg:gap-12 md:gap-4 gap-2 justify-center items-center md:py-12 py-8 md:mt-0 mt-8"
+			>
 				<div className="text-center relative">
 					<div className="md:text-5xl text-3xl font-bold">{t.menu.technologies}</div>
 					<div className="font-light">{t.sections.technologies.description}</div>

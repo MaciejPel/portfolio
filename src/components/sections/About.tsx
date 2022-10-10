@@ -8,6 +8,7 @@ import sigma from '../../../public/images/sigma.svg';
 import circle from '../../../public/images/circle.svg';
 import square from '../../../public/images/square.svg';
 import integral from '../../../public/images/integral.svg';
+import { useInView } from 'react-intersection-observer';
 
 interface AboutProps {
 	active: string;
@@ -15,19 +16,20 @@ interface AboutProps {
 }
 
 const symbols = [
-	{ img: sigma, css: 'w-24 h-24 lg:block hidden -z-3 left-[4%] top-[120%] -rotate-45' },
-	{ img: triangle, css: 'w-40 h-40 lg:block hidden -z-3 left-[22%] top-[143%] rotate-12' },
-	{ img: circle, css: 'w-40 h-40 lg:block hidden -z-3 left-[70%] top-[143%]' },
-	{ img: square, css: 'w-40 h-40 lg:block hidden -z-3 left-[46%] top-[148%] rotate-[250deg]' },
+	{ img: sigma, css: 'w-24 h-24 xl:lg:left-[4%] left-[2%] top-[120%] -rotate-45' },
+	{ img: triangle, css: 'w-40 h-40 left-[20%] xl:top-[143%] top-[140%] rotate-12' },
+	{ img: circle, css: 'w-40 h-40 left-[70%] xl:top-[143%] top-[140%]' },
+	{ img: square, css: 'w-40 h-40 left-[45%] xl:top-[148%] top-[140%] rotate-[250deg]' },
 	{
 		img: integral,
-		css: `w-20 h-20 lg:block hidden -z-3 left-[90%] top-[120%] rotate-12`,
+		css: `w-20 h-20 left-[90%] top-[120%] rotate-12`,
 	},
 ];
 
 const About: React.FC<AboutProps> = ({ active, setRef }) => {
 	const { locale } = useRouter();
 	const t = locale === 'en' ? en : pl;
+	const { ref, inView } = useInView({ threshold: 0.4 });
 
 	return (
 		<section
@@ -38,7 +40,7 @@ const About: React.FC<AboutProps> = ({ active, setRef }) => {
 			{symbols.map((symbol, index) => (
 				<div
 					key={index}
-					className={`absolute -z-3 ${symbol.css}`}
+					className={`absolute -z-3 lg:block hidden -z-3 ${symbol.css}`}
 				>
 					<Image
 						src={symbol.img}
@@ -48,14 +50,23 @@ const About: React.FC<AboutProps> = ({ active, setRef }) => {
 			))}
 			<div className="container mx-auto lg:py-24 lg:px-24 flex relative z-10">
 				<div className="lg:grid lg:grid-cols-6 flex flex-col rounded-xl p-4 lg:gap-10 gap-4">
-					<div className="col-span-2 flex lg:justify-end justify-center">
+					<div
+						ref={ref}
+						className={`col-span-2 flex lg:justify-end justify-center lg:transition-all lg:duration-[800ms] ${
+							inView ? 'lg:animate-fadeInLeft' : 'lg:-translate-x-[20%] lg:opacity-0'
+						}`}
+					>
 						<Image
 							src={avatar}
 							alt="avatar"
 							className="rounded-full"
 						/>
 					</div>
-					<div className="col-span-4 flex flex-col justify-center gap-2 lg:gap-0">
+					<div
+						className={`col-span-4 flex flex-col justify-center gap-2 lg:gap-0 lg:transition-all lg:duration-[800ms] ${
+							inView ? 'lg:animate-fadeInRight' : 'lg:translate-x-[20%] lg:opacity-0'
+						}`}
+					>
 						<div className="md:text-5xl text-3xl font-bold text-center lg:text-left">
 							{t.sections.about.title}
 						</div>

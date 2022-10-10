@@ -2,8 +2,6 @@ import Image, { StaticImageData } from 'next/image';
 import { useInView } from 'react-intersection-observer';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid';
 import GithubIcon from './GithubIcon';
-import { useEffect } from 'react';
-
 interface ProjectCardProps {
 	title: string;
 	description: string;
@@ -23,7 +21,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 	badges,
 	reversed,
 }) => {
-	const { ref, inView, entry } = useInView({ threshold: 0.4 });
+	const { ref, inView } = useInView({ threshold: 0.4 });
 
 	return (
 		<div
