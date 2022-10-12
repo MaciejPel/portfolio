@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
 import { useRouter } from 'next/router';
+import emailjs from '@emailjs/browser';
 import { en, pl } from '../../utils/translation';
 
 interface ContactProps {

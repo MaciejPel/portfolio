@@ -63,7 +63,7 @@ export const technologies: { [key: string]: TechnologiesInterface } = {
 		usage: ['technologies', 'spotter', 'storagebox'],
 	},
 	nextjs: {
-		name: 'Nextjs',
+		name: 'NextJS',
 		img: nextLogo,
 		type: ['frontend'],
 		usage: ['technologies', 'storagebox'],
@@ -126,5 +126,5 @@ export const technologies: { [key: string]: TechnologiesInterface } = {
 		usage: ['technologies'],
 	},
 	wordpress: { name: 'Wordpress', img: wordpressLogo, type: ['other'], usage: ['technologies'] },
-	spotify: { name: 'spotifyApi', img: spotifyLogo, type: ['other'], usage: ['spotter'] },
+	spotify: { name: 'Spotify API', img: spotifyLogo, type: ['other'], usage: ['spotter'] },
 };

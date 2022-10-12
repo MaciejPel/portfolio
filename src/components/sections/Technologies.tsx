@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useInView } from 'react-intersection-observer';
 import autoAnimate from '@formkit/auto-animate';
 import { en, pl } from '../../utils/translation';
 import { technologies, technologyCategories, TypeUnion } from '../../utils/constants';
@@ -8,7 +9,6 @@ import { XMarkIcon } from '@heroicons/react/24/solid';
 import ToNext from '../ToNext';
 import line1 from '../../../public/images/line1.svg';
 import line2 from '../../../public/images/line2.svg';
-import { useInView } from 'react-intersection-observer';
 
 interface TechnologiesProps {
 	active: string;

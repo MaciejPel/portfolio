@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useInView } from 'react-intersection-observer';
 import { en, pl } from '../../utils/translation';
 import ToNext from '../ToNext';
 import avatar from '../../../public/images/avatar.jpg';
@@ -8,7 +9,6 @@ import sigma from '../../../public/images/sigma.svg';
 import circle from '../../../public/images/circle.svg';
 import square from '../../../public/images/square.svg';
 import integral from '../../../public/images/integral.svg';
-import { useInView } from 'react-intersection-observer';
 
 interface AboutProps {
 	active: string;
