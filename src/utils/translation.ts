@@ -21,6 +21,7 @@ export const pl = {
 			developer: 'Frontend Developer',
 			enthusiast: 'Entuzjasta Internetu',
 			enjoyer: 'Miłośnik technologii',
+			github: 'Mój GitHub',
 		},
 		about: {
 			title: 'O mnie',
@@ -104,6 +105,7 @@ export const en = {
 			developer: 'Frontend Developer',
 			enthusiast: 'Web Enthusiast',
 			enjoyer: 'Technology Enjoyer',
+			github: 'My GitHub',
 		},
 		about: {
 			title: 'About me',

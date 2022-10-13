@@ -12,6 +12,7 @@ import blob6 from '../../../public/images/blob6.svg';
 import blob7 from '../../../public/images/blob7.svg';
 import bg from '../../../public/images/bg.svg';
 import bgMobile from '../../../public/images/bg-mobile.svg';
+import GithubIcon from '../GithubIcon';
 
 const blobs = [
 	{
@@ -77,6 +78,17 @@ const Home: React.FC<HomeProps> = ({ active, setRef }) => {
 							}}
 						/>
 						{'/>'}
+					</div>
+					<div className="flex justify-center lg:justify-start">
+						<a
+							href="https://github.com/MaciejPel"
+							target="_blank"
+							rel="noreferrer"
+							className="inline-flex gap-2 px-4 py-2 bg-amber-400 hover:bg-amber-500 dark:bg-blue-600 dark:hover:bg-blue-700 rounded-md font-medium text-md items-center"
+						>
+							<GithubIcon className="fill-black dark:fill-white w-6 h-6" />
+							{t.sections.home.github}
+						</a>
 					</div>
 				</div>
 				<div className="lg:w-1/2 lg:block hidden">
