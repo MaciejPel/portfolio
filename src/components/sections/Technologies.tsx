@@ -90,7 +90,7 @@ const Technologies: React.FC<TechnologiesProps> = ({ active, setRef }) => {
 						<button
 							type="button"
 							title="Reset"
-							className="dark:hover:bg-blue-600 hover:bg-amber-400 rounded inline-flex cursor-pointer select-none px-2"
+							className="relative dark:hover:bg-blue-600 hover:bg-amber-400 rounded inline-flex cursor-pointer select-none px-2"
 							onClick={() => setTechFilter([])}
 						>
 							<XMarkIcon className="w-6" />
@@ -101,7 +101,10 @@ const Technologies: React.FC<TechnologiesProps> = ({ active, setRef }) => {
 						className="grid grid-cols-layout grid-rows-layout md:gap-4 gap-2 grid-flow-dense"
 					>
 						{techItems
-							.filter((item) => techFilter.every((i) => item.type.includes(i)))
+							.filter((item) => {
+								if (techFilter.length == 0) return item;
+								return techFilter.some((i) => item.type.includes(i));
+							})
 							.map((item) => (
 								<div
 									key={item.name}
