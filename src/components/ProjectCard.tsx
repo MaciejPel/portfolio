@@ -68,7 +68,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 						href={git}
 						target="_blank"
 						rel="noreferrer"
-						className="rounded-lg dark:hover:bg-blue-600 hover:bg-amber-400 transition-colors p-2"
+						className="rounded-lg mobileHover:dark:hover:bg-blue-600 mobileHover:hover:bg-amber-400 transition-colors p-2"
 					>
 						<GithubIcon className="w-6 h-6 fill-black dark:fill-white" />
 					</a>
@@ -76,7 +76,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 						href={url}
 						target="_blank"
 						rel="noreferrer"
-						className="rounded-lg dark:hover:bg-blue-600 hover:bg-amber-400 transition-colors p-2"
+						className="rounded-lg mobileHover:dark:hover:bg-blue-600 mobileHover:hover:bg-amber-400 transition-colors p-2"
 					>
 						<ArrowTopRightOnSquareIcon className="w-6 h-6" />
 					</a>

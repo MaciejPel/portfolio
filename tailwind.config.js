@@ -4,6 +4,9 @@ module.exports = {
 	darkMode: 'class',
 	theme: {
 		extend: {
+			screens: {
+				mobileHover: { raw: '(hover: hover)' },
+			},
 			colors: {
 				alabaster: '#ede9e0',
 				linen: '#ece4db',

@@ -107,9 +107,13 @@ const Contact: React.FC<ContactProps> = ({ active, setRef }) => {
 					<div className="flex justify-between md:flex-row flex-col gap-4">
 						<div
 							className={`px-4 py-2 rounded shadow font-medium text-center ${
-								contactState.error ? 'block cursor-pointer bg-red-400 hover:bg-red-500' : ''
+								contactState.error
+									? 'block cursor-pointer bg-red-400 mobileHover:hover:bg-red-500'
+									: ''
 							} ${
-								contactState.success ? 'block cursor-pointer bg-green-500 hover:bg-green-600' : ''
+								contactState.success
+									? 'block cursor-pointer bg-green-500 mobileHover:hover:bg-green-600'
+									: ''
 							} ${
 								!contactState.error && !contactState.success
 									? 'opacity-0 md:block hidden cursor-auto select-none'
@@ -123,7 +127,7 @@ const Contact: React.FC<ContactProps> = ({ active, setRef }) => {
 						<input
 							type="submit"
 							value={t.sections.contact.submit}
-							className="px-4 py-2 rounded shadow cursor-pointer hover:bg-amber-400 dark:hover:bg-blue-600 bg-zinc-50 dark:bg-zinc-700 font-medium"
+							className="px-4 py-2 rounded shadow cursor-pointer mobileHover:hover:bg-amber-400 mobileHover:dark:hover:bg-blue-600 bg-zinc-50 dark:bg-zinc-700 font-medium"
 						/>
 					</div>
 				</form>

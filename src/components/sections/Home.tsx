@@ -84,7 +84,7 @@ const Home: React.FC<HomeProps> = ({ active, setRef }) => {
 							href="https://github.com/MaciejPel"
 							target="_blank"
 							rel="noreferrer"
-							className="inline-flex gap-2 px-4 py-2 bg-amber-400 hover:bg-amber-500 dark:bg-blue-600 dark:hover:bg-blue-700 rounded-md font-medium text-md items-center"
+							className="inline-flex gap-2 px-4 py-2 bg-amber-400 mobileHover:hover:bg-amber-500 dark:bg-blue-600 mobileHover:dark:hover:bg-blue-700 rounded-md font-medium text-md items-center"
 						>
 							<GithubIcon className="fill-black dark:fill-white w-6 h-6" />
 							{t.sections.home.github}

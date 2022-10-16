@@ -73,8 +73,10 @@ const Technologies: React.FC<TechnologiesProps> = ({ active, setRef }) => {
 				<div className="w-full flex flex-col gap-2">
 					<div className="w-full flex justify-end gap-x-4 font-medium flex-wrap">
 						{technologyCategories.map((category, index) => (
-							<div
+							<button
 								key={index}
+								type="button"
+								title={`Add ${category} to filters`}
 								className={`btn-active cursor-pointer select-none ${
 									techFilter.includes(category) ? 'active' : ''
 								}`}
@@ -85,12 +87,12 @@ const Technologies: React.FC<TechnologiesProps> = ({ active, setRef }) => {
 								}}
 							>
 								{t.sections.technologies[category as keyof typeof t.sections.technologies]}
-							</div>
+							</button>
 						))}
 						<button
 							type="button"
 							title="Reset"
-							className="relative dark:hover:bg-blue-600 hover:bg-amber-400 rounded inline-flex cursor-pointer select-none px-2"
+							className="relative mobileHover:dark:hover:bg-blue-600 mobileHover:hover:bg-amber-400 rounded inline-flex cursor-pointer select-none px-2"
 							onClick={() => setTechFilter([])}
 						>
 							<XMarkIcon className="w-6" />

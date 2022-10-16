@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
 					<a
 						href="https://github.com/MaciejPel"
 						target="__blank"
-						className="font-semibold hover:text-amber-500 dark:hover:text-blue-400 hover:underline"
+						className="font-semibold mobileHover:hover:text-amber-500 mobileHover:dark:hover:text-blue-400 mobileHover:hover:underline"
 					>
 						Maciej Pełczyński
 					</a>

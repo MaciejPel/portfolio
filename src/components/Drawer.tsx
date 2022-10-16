@@ -15,12 +15,14 @@ const Drawer: React.FC<DrawerProps> = ({ open, onClose, children }) => {
 				}`}
 			>
 				<div className="flex justify-end mb-8">
-					<div
-						className="dark:hover:bg-blue-600 hover:bg-amber-400 rounded inline-flex cursor-pointer select-none h-8 px-2"
+					<button
+						type="button"
+						title="Close drawer"
+						className="mobileHover:dark:hover:bg-blue-600 mobileHover:hover:bg-amber-400 rounded inline-flex cursor-pointer select-none h-8 px-2"
 						onClick={() => onClose()}
 					>
 						<XMarkIcon className="w-8" />
-					</div>
+					</button>
 				</div>
 				<div className="block text-[20px]">{children}</div>
 			</div>
