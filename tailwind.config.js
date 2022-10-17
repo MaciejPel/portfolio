@@ -7,10 +7,6 @@ module.exports = {
 			screens: {
 				mobileHover: { raw: '(hover: hover)' },
 			},
-			colors: {
-				alabaster: '#ede9e0',
-				linen: '#ece4db',
-			},
 			gridTemplateColumns: {
 				layout: 'repeat(auto-fill, minmax(160px, 1fr));',
 			},

@@ -110,7 +110,7 @@ const Technologies: React.FC<TechnologiesProps> = ({ active, setRef }) => {
 							.map((item) => (
 								<div
 									key={item.name}
-									className="bg-zinc-50 dark:bg-zinc-800 rounded px-4 py-2 shadow-sm flex-col relative from-yellow-200 bg-gradient-to-tl dark:from-blue-600 flex gap-3 select-none hover:shadow-md transition-all group hover:animate-gradient cursor-pointer min-h-[230px] max-h-[250px]"
+									className="bg-zinc-50 dark:bg-zinc-800 rounded px-4 py-2 shadow-sm flex-col relative from-yellow-200 bg-gradient-to-tl dark:from-blue-600 flex gap-2 select-none hover:shadow-md transition-all group hover:animate-gradient cursor-pointer h-[230px]"
 									style={{ backgroundSize: '400% 400%' }}
 								>
 									<div className="h-4/5 flex flex-col justify-center group-hover:scale-110 transition-transform p-2">
