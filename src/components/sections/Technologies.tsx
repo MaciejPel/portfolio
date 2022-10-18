@@ -5,8 +5,8 @@ import { useInView } from 'react-intersection-observer';
 import autoAnimate from '@formkit/auto-animate';
 import { en, pl } from '../../utils/translation';
 import { technologies, technologyCategories, TypeUnion } from '../../utils/constants';
-import { XMarkIcon } from '@heroicons/react/24/solid';
 import ToNext from '../ToNext';
+import { XMarkIcon } from '@heroicons/react/24/solid';
 import line1 from '../../../public/images/line1.svg';
 import line2 from '../../../public/images/line2.svg';
 
@@ -92,7 +92,7 @@ const Technologies: React.FC<TechnologiesProps> = ({ active, setRef }) => {
 						<button
 							type="button"
 							title="Reset"
-							className="relative mobileHover:dark:hover:bg-blue-600 mobileHover:hover:bg-amber-400 rounded inline-flex cursor-pointer select-none px-2"
+							className="relative dark:mobileHover:hover:bg-blue-600 mobileHover:hover:bg-amber-400 rounded inline-flex cursor-pointer select-none px-2"
 							onClick={() => setTechFilter([])}
 						>
 							<XMarkIcon className="w-6" />

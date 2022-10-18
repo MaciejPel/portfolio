@@ -18,7 +18,7 @@ const Drawer: React.FC<DrawerProps> = ({ open, onClose, children }) => {
 					<button
 						type="button"
 						title="Close drawer"
-						className="mobileHover:dark:hover:bg-blue-600 mobileHover:hover:bg-amber-400 rounded inline-flex cursor-pointer select-none h-8 px-2"
+						className="dark:mobileHover:hover:bg-blue-600 mobileHover:hover:bg-amber-400 rounded inline-flex cursor-pointer select-none h-8 px-2"
 						onClick={() => onClose()}
 					>
 						<XMarkIcon className="w-8" />

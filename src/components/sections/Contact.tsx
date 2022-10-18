@@ -1,14 +1,14 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
-import emailjs from '@emailjs/browser';
 import { en, pl } from '../../utils/translation';
+import emailjs from '@emailjs/browser';
 
 interface ContactProps {
 	active: string;
 	setRef: (e: HTMLElement) => HTMLElement;
 }
 
-const Contact: React.FC<ContactProps> = ({ active, setRef }) => {
+const Contact: React.FC<ContactProps> = ({ setRef }) => {
 	const { locale } = useRouter();
 	const t = locale === 'en' ? en : pl;
 
@@ -127,7 +127,7 @@ const Contact: React.FC<ContactProps> = ({ active, setRef }) => {
 						<input
 							type="submit"
 							value={t.sections.contact.submit}
-							className="px-4 py-2 rounded shadow cursor-pointer mobileHover:hover:bg-amber-400 mobileHover:dark:hover:bg-blue-600 bg-zinc-50 dark:bg-zinc-700 font-medium"
+							className="px-4 py-2 rounded shadow cursor-pointer mobileHover:hover:bg-amber-400 dark:mobileHover:hover:bg-blue-600 bg-zinc-50 dark:bg-zinc-700 font-medium"
 						/>
 					</div>
 				</form>

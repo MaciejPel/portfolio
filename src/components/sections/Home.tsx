@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Typewriter from 'typewriter-effect';
 import { en, pl } from '../../utils/translation';
 import ToNext from '../ToNext';
+import GithubIcon from '../GithubIcon';
 import blob1 from '../../../public/images/blob1.svg';
 import blob2 from '../../../public/images/blob2.svg';
 import blob3 from '../../../public/images/blob3.svg';
@@ -12,7 +13,6 @@ import blob6 from '../../../public/images/blob6.svg';
 import blob7 from '../../../public/images/blob7.svg';
 import bg from '../../../public/images/bg.svg';
 import bgMobile from '../../../public/images/bg-mobile.svg';
-import GithubIcon from '../GithubIcon';
 
 const blobs = [
 	{
@@ -84,7 +84,7 @@ const Home: React.FC<HomeProps> = ({ active, setRef }) => {
 							href="https://github.com/MaciejPel"
 							target="_blank"
 							rel="noreferrer"
-							className="inline-flex gap-2 px-4 py-2 bg-amber-400 mobileHover:hover:bg-amber-500 dark:bg-blue-600 mobileHover:dark:hover:bg-blue-700 rounded-md font-medium text-md items-center"
+							className="inline-flex gap-2 px-4 py-2 bg-amber-400 mobileHover:hover:bg-amber-500 dark:bg-blue-600 dark:mobileHover:hover:bg-blue-700 rounded-md font-medium text-md items-center"
 						>
 							<GithubIcon className="fill-black dark:fill-white w-6 h-6" />
 							{t.sections.home.github}

@@ -1,8 +1,8 @@
+import React, { useState } from 'react';
 import Header from './Header';
 import Meta from './Meta';
 import ToTop from './ToTop';
 import Footer from './Footer';
-import React, { useState } from 'react';
 
 const Layout: React.FC<{ children: React.ReactElement }> = ({ children }) => {
 	const [active, setActive] = useState<string>('home');
