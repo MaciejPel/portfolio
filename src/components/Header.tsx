@@ -37,11 +37,13 @@ const Header: React.FC<{ active: string }> = ({ active }) => {
 		() =>
 			navigation.map((item, index) => (
 				<a
+					href={`#${item}`}
 					key={index}
 					className={`btn-active font-medium md:flex md:mb-0 mb-4 table select-none cursor-pointer ${
 						item === active ? 'active' : ''
 					}`}
-					onClick={() => {
+					onClick={(e) => {
+						e.preventDefault();
 						setDrawer(false);
 						scrollTo(item);
 					}}
@@ -149,7 +151,7 @@ const Header: React.FC<{ active: string }> = ({ active }) => {
 								{themes.map((theme, i) => (
 									<li
 										key={i}
-										className={`rounded-lg py-2 px-4 font-medium cursor-pointer flex gap-2  ${
+										className={`rounded-lg py-2 px-4 font-medium cursor-pointer flex gap-2 ${
 											theme.name === currentTheme
 												? 'dark:bg-blue-600 bg-amber-400'
 												: 'dark:hover:bg-zinc-600 hover:bg-zinc-100'

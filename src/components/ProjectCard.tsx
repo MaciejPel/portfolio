@@ -69,6 +69,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 						target="_blank"
 						rel="noreferrer"
 						className="rounded-lg dark:mobileHover:hover:bg-blue-600 mobileHover:hover:bg-amber-400 transition-colors p-2"
+						aria-label="Github"
 					>
 						<GithubIcon className="w-6 h-6 fill-black dark:fill-white" />
 					</a>
@@ -77,6 +78,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 						target="_blank"
 						rel="noreferrer"
 						className="rounded-lg dark:mobileHover:hover:bg-blue-600 mobileHover:hover:bg-amber-400 transition-colors p-2"
+						aria-label={title}
 					>
 						<ArrowTopRightOnSquareIcon className="w-6 h-6" />
 					</a>
@@ -85,8 +87,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 			<a
 				href={url}
 				target="_blank"
-				className={`relative z-[1] ${reversed ? '-lg:translate-x-10' : 'lg:translate-x-10'}`}
 				rel="noreferrer"
+				className={`relative z-[1] ${reversed ? '-lg:translate-x-10' : 'lg:translate-x-10'}`}
 			>
 				<Image
 					src={image}
