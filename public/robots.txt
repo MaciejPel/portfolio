@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: http://maciej.vercel.app
+
+# Sitemaps
+Sitemap: http://maciej.vercel.app/sitemap.xml

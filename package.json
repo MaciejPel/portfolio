@@ -4,16 +4,18 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"build": "next build",
+		"build": "next build && next-sitemap",
 		"start": "next start",
 		"lint": "next lint",
-		"styles": "npx tailwindcss -o ./src/styles/index.css --minify"
+		"styles": "npx tailwindcss -o ./src/styles/index.css --minify",
+		"postbuild": "next-sitemap"
 	},
 	"dependencies": {
 		"@emailjs/browser": "^3.7.0",
 		"@formkit/auto-animate": "^1.0.0-beta.3",
 		"@heroicons/react": "^2.0.11",
 		"next": "12.3.1",
+		"next-sitemap": "^3.1.29",
 		"next-themes": "^0.2.1",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
