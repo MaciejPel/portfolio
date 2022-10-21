@@ -1,6 +1,8 @@
 import plFlag from '../../public/flags/pl.svg';
 import usFlag from '../../public/flags/us.svg';
 
+const age = new Date().getFullYear() - 2000;
+
 export const pl = {
 	title: 'Witaj w Next.js!',
 	menu: {
@@ -12,6 +14,7 @@ export const pl = {
 		contact: 'Dzięki za przewinięcie!',
 	},
 	themes: {
+		system: 'System',
 		light: 'Jasny',
 		dark: 'Ciemny',
 	},
@@ -25,8 +28,7 @@ export const pl = {
 		},
 		about: {
 			title: 'O mnie',
-			description:
-				'Cześć, nazywam się Maciej Pełczyński. Mam 22 lata i zajmuję się programowaniem stron- preferuję Frontend, choć w moich projektach niejednokrotnie musiałem zadbać o bezpieczeństwo użytkownika i intergralność danych, dlatego czasami wskakuję też na Backend. Jestem absolwentem technikum informatycznego, a aktualnie studiuję informatykę na Politechnice Poznańskiej. W wolnym czasie poznaję nowe technologie i amatorsko zajmuję się obróbką zdjęć i filmów. Poniżej możesz znaleźć więcej informacji o używanych technologiach oraz doświadczeniu.',
+			description: `Cześć, nazywam się Maciej Pełczyński. Mam ${age} lata i zajmuję się programowaniem stron- preferuję Frontend, choć w moich projektach niejednokrotnie musiałem zadbać o bezpieczeństwo użytkownika i intergralność danych, dlatego czasami wskakuję też na Backend. Jestem absolwentem technikum informatycznego, a aktualnie studiuję informatykę na Politechnice Poznańskiej. W wolnym czasie poznaję nowe technologie i amatorsko zajmuję się obróbką zdjęć i filmów. Poniżej możesz znaleźć więcej informacji o używanych technologiach oraz doświadczeniu.`,
 		},
 		technologies: {
 			description: 'Technologie, z kórych korzystam na co dzień',
@@ -96,6 +98,7 @@ export const en = {
 		contact: 'Thanks for scrolling!',
 	},
 	themes: {
+		system: 'System',
 		light: 'Light',
 		dark: 'Dark',
 	},
@@ -109,8 +112,7 @@ export const en = {
 		},
 		about: {
 			title: 'About me',
-			description:
-				"Hi, my name is Maciej Pełczyński. I am 22 years old, and I am dealing with programming pages- I prefer Frontend, however in my projects I've had to take care of user security and data integrity on multiple occasions, so I jump on the Backend from time to time. I am a graduate of an IT technical school, and I am currently studying computer science at the Poznan University of Technology. In my spare time, I learn about new technologies and do amateur photo and video processing. Below you can find more about the used technologies and experience.",
+			description: `Hi, my name is Maciej Pełczyński. I am ${age} years old, and I am dealing with programming pages- I prefer Frontend, however in my projects I've had to take care of user security and data integrity on multiple occasions, so I jump on the Backend from time to time. I am a graduate of an IT technical school, and I am currently studying computer science at the Poznan University of Technology. In my spare time, I learn about new technologies and do amateur photo and video processing. Below you can find more about the used technologies and experience.`,
 		},
 		technologies: {
 			description: "Technologies I'm comfortable to work with",

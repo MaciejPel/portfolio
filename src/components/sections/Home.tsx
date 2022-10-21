@@ -62,7 +62,7 @@ const Home: React.FC<HomeProps> = ({ active, setRef }) => {
 						<div className="lg:text-lg font-medium text-zinc-600 dark:text-zinc-300 -mb-2 text-xl">
 							{t.sections.home.welcome}
 						</div>
-						<div className="lg:text-7xl text-5xl font-extrabold">Maciej👋</div>
+						<h1 className="lg:text-7xl text-5xl font-extrabold">Maciej👋</h1>
 					</div>
 					<div className="text-zinc-600 dark:text-zinc-300 lg:text-5xl text-2xl font-semibold font-mono text-center lg:text-left">
 						{'<'}

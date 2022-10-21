@@ -7,12 +7,20 @@ import useWindowSize from '../hooks/useWindowSize';
 import useScroll from '../hooks/useScroll';
 import { en, pl, languageOptions } from '../utils/translation';
 import { navigation } from '../utils/constants';
-import { LanguageIcon, SwatchIcon, SunIcon, MoonIcon, Bars3Icon } from '@heroicons/react/24/solid';
+import {
+	LanguageIcon,
+	SwatchIcon,
+	SunIcon,
+	MoonIcon,
+	Bars3Icon,
+	ComputerDesktopIcon,
+} from '@heroicons/react/24/solid';
 import Drawer from './Drawer';
 import Dropdown from './Dropdown';
 import Meta from './Meta';
 
 const themes = [
+	{ name: 'system', icon: <ComputerDesktopIcon className="w-5" /> },
 	{ name: 'light', icon: <SunIcon className="w-5" /> },
 	{ name: 'dark', icon: <MoonIcon className="w-5" /> },
 ];
