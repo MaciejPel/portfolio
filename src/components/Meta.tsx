@@ -4,13 +4,18 @@ import { useTheme } from 'next-themes';
 const Meta: React.FC<{ title?: string }> = ({ title = 'Home' }) => {
 	const titleTag = `${title} | Maciej Pełczyński | Front-End Developer`;
 	const { theme } = useTheme();
+	const favicon = (): string => {
+		if (theme === 'system') return '/favicon-neutral.ico';
+		if (theme === 'dark') return '/favicon-dark.ico';
+		return '/favicon-light.ico';
+	};
 
 	return (
 		<Head>
 			<title>{titleTag}</title>
 			<link
 				rel="shortcut icon"
-				href={theme == 'dark' ? '/favicon-dark.ico' : '/favicon-light.ico'}
+				href={favicon()}
 			/>
 			<meta
 				name="viewport"
