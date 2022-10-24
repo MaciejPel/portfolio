@@ -45,6 +45,7 @@ const About: React.FC<AboutProps> = ({ active, setRef }) => {
 					<Image
 						src={symbol.img}
 						alt="symbol"
+						layout="responsive"
 					/>
 				</div>
 			))}
@@ -60,6 +61,7 @@ const About: React.FC<AboutProps> = ({ active, setRef }) => {
 							src={avatar}
 							alt="avatar"
 							className="rounded-full"
+							layout="responsive"
 						/>
 					</div>
 					<div

@@ -59,6 +59,7 @@ const Technologies: React.FC<TechnologiesProps> = ({ active, setRef }) => {
 					<Image
 						src={line.img}
 						alt="line"
+						layout="responsive"
 					/>
 				</div>
 			))}
@@ -117,6 +118,7 @@ const Technologies: React.FC<TechnologiesProps> = ({ active, setRef }) => {
 										<Image
 											src={item.img}
 											alt={item.name}
+											layout="responsive"
 										/>
 									</div>
 									<div className="text-center font-medium text-lg">{item.name}</div>
