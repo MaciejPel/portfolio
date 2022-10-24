@@ -139,7 +139,6 @@ const Header: React.FC<{ active: string }> = ({ active }) => {
 												width="32"
 												height="24"
 												alt={l}
-												layout="responsive"
 											/>
 											{
 												languageOptions.abbreviations[

@@ -53,7 +53,6 @@ const Home: React.FC<HomeProps> = ({ active, setRef }) => {
 					<Image
 						src={blob.img}
 						alt="blob"
-						layout="responsive"
 					/>
 				</div>
 			))}
@@ -96,14 +95,12 @@ const Home: React.FC<HomeProps> = ({ active, setRef }) => {
 					<Image
 						src={bg}
 						alt="bg"
-						layout="responsive"
 					/>
 				</div>
 				<div className="w-full lg:hidden block">
 					<Image
 						src={bgMobile}
 						alt="bg"
-						layout="responsive"
 					/>
 				</div>
 			</div>

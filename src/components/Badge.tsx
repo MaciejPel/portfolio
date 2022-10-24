@@ -7,7 +7,6 @@ const Badge: React.FC<{ title: string; icon: StaticImageData }> = ({ title, icon
 				<Image
 					src={icon}
 					alt={title}
-					layout="intrinsic"
 				/>
 			</div>
 			{title}
