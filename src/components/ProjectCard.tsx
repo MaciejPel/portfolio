@@ -94,6 +94,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 					src={image}
 					alt={title}
 					className="rounded-3xl lg:grayscale-[66%] lg:hover:grayscale-0 transition-all duration-300"
+					layout="intrinsic"
 				/>
 			</a>
 		</div>
