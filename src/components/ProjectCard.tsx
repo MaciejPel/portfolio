@@ -1,7 +1,8 @@
 import Image, { StaticImageData } from 'next/image';
 import { useInView } from 'react-intersection-observer';
-import GithubIcon from './GithubIcon';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid';
+import Tilt from 'react-parallax-tilt';
+import GithubIcon from './GithubIcon';
 interface ProjectCardProps {
 	title: string;
 	description: string;
@@ -90,12 +91,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 				rel="noreferrer"
 				className={`relative z-[1] ${reversed ? '-lg:translate-x-10' : 'lg:translate-x-10'}`}
 			>
-				<Image
-					src={image}
-					alt={title}
-					className="rounded-3xl lg:grayscale-[66%] lg:hover:grayscale-0 transition-all duration-300"
-					placeholder="blur"
-				/>
+				<Tilt>
+					<Image
+						src={image}
+						alt={title}
+						className="rounded-3xl lg:grayscale-[66%] lg:hover:grayscale-0 transition-all duration-300"
+						placeholder="blur"
+					/>
+				</Tilt>
 			</a>
 		</div>
 	);

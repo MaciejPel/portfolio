@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import autoAnimate from '@formkit/auto-animate';
 import { en, pl } from '../../utils/translation';
 import { technologies, technologyCategories, TypeUnion } from '../../utils/constants';
+import Tilt from 'react-parallax-tilt';
 import ToNext from '../ToNext';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import line1 from '../../../public/images/line1.svg';
@@ -108,19 +109,20 @@ const Technologies: React.FC<TechnologiesProps> = ({ active, setRef }) => {
 								return techFilter.some((i) => item.type.includes(i));
 							})
 							.map((item) => (
-								<div
-									key={item.name}
-									className="bg-zinc-50 dark:bg-zinc-800 rounded px-4 py-2 shadow-sm flex-col relative from-yellow-200 bg-gradient-to-tl dark:from-blue-600 flex gap-2 select-none hover:shadow-md transition-all group hover:animate-gradient cursor-pointer h-[230px]"
-									style={{ backgroundSize: '400% 400%' }}
-								>
-									<div className="h-4/5 flex flex-col justify-center group-hover:scale-110 transition-transform p-2">
-										<Image
-											src={item.img}
-											alt={item.name}
-										/>
+								<Tilt key={item.name}>
+									<div
+										className="bg-zinc-50 dark:bg-zinc-800 rounded px-4 py-2 shadow-sm flex-col relative from-yellow-200 bg-gradient-to-tl dark:from-blue-600 flex gap-2 select-none hover:shadow-md transition-all group hover:animate-gradient cursor-pointer h-[230px]"
+										style={{ backgroundSize: '400% 400%' }}
+									>
+										<div className="h-4/5 flex flex-col justify-center p-2">
+											<Image
+												src={item.img}
+												alt={item.name}
+											/>
+										</div>
+										<div className="text-center font-medium text-lg">{item.name}</div>
 									</div>
-									<div className="text-center font-medium text-lg">{item.name}</div>
-								</div>
+								</Tilt>
 							))}
 					</div>
 				</div>
