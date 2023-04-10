@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router';
-import { useInView } from 'react-intersection-observer';
-import { en, pl } from '../../utils/translation';
-import { ChevronRightIcon } from '@heroicons/react/24/solid';
-import Step from '../Step';
+import { useRouter } from "next/router";
+import { useInView } from "react-intersection-observer";
+import { en, pl } from "../../utils/translation";
+import { ChevronRightIcon } from "@heroicons/react/24/solid";
+import Step from "../Step";
 
 interface MileStepsProps {
 	active: string;
@@ -11,10 +11,10 @@ interface MileStepsProps {
 
 const MileSteps: React.FC<MileStepsProps> = ({ active, setRef }) => {
 	const { locale } = useRouter();
-	const t = locale === 'en' ? en : pl;
-	const { ref, inView } = useInView({ threshold: 1 });
+	const t = locale === "en" ? en : pl;
+	const { ref, inView } = useInView({ threshold: 0.85 });
 
-	const { beginning, birrt, br, solo } = t.sections['mile-steps'];
+	const { beginning, birrt, br, solo } = t.sections["mile-steps"];
 	const steps = [
 		{
 			id: 1,
@@ -46,12 +46,9 @@ const MileSteps: React.FC<MileStepsProps> = ({ active, setRef }) => {
 	];
 
 	return (
-		<section
-			id="mile-steps"
-			ref={setRef}
-		>
+		<section id="mile-steps" ref={setRef}>
 			<div className="lg:text-5xl font-bold text-3xl mb-2 text-center pt-4">
-				{t.menu['mile-steps']}
+				{t.menu["mile-steps"]}
 			</div>
 			<div className="container mx-auto lg:px-8	px-16 lg:pt-12 py-2">
 				<div>
@@ -73,7 +70,7 @@ const MileSteps: React.FC<MileStepsProps> = ({ active, setRef }) => {
 								<div
 									key={index}
 									className={`flex items-center lg:col-span-1 row-span-1 justify-center lg:duration-[400ms] ${
-										inView ? 'lg:opacity-100' : 'lg:opacity-0'
+										inView ? "lg:opacity-100" : "lg:opacity-0"
 									}`}
 								>
 									<ChevronRightIcon className="w-8 lg:rotate-0 rotate-90" />
@@ -83,8 +80,8 @@ const MileSteps: React.FC<MileStepsProps> = ({ active, setRef }) => {
 					</div>
 				</div>
 				<div className="flex flex-col items-center text-2xl font-medium py-12">
-					<div>{t.sections['mile-steps'].all}</div>
-					<div>{t.sections['mile-steps'].thanks}</div>
+					<div>{t.sections["mile-steps"].all}</div>
+					<div>{t.sections["mile-steps"].thanks}</div>
 					🤗
 				</div>
 			</div>
