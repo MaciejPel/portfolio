@@ -1,12 +1,12 @@
 <div align="center">
-  <img src="https://i.imgur.com/QqSMojr.png" alt="favicon" width="100"/>
+  <img src="https://user-images.githubusercontent.com/67285453/234613243-f0a2543a-1768-4ede-a3ad-60b4573cb56d.png" alt="favicon" width="100"/>
   <h1 align="center">Personal portfolio</h1>
 </div>
 <p align="center">
   This project is my first personal portoflio. It is available at <a href="https://maciej.vercel.app" target="_blank">maciej.vercel.app</a>.
 </p>
 <div align="center">
-  <img src="https://i.imgur.com/nynCXUB.png" alt="main"/>
+  <img src="https://user-images.githubusercontent.com/67285453/234613399-ff67fa4f-dcbc-48ee-a015-e83ce1f89f5c.png" alt="main"/>
 </div>
 
 ## 🚨 Info
