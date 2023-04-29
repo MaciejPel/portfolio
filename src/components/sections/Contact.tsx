@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
-import { useRouter } from 'next/router';
-import { en, pl } from '../../utils/translation';
-import emailjs from '@emailjs/browser';
+import { useRef, useState } from "react";
+import { useRouter } from "next/router";
+import { en, pl } from "../../utils/translation";
+import emailjs from "@emailjs/browser";
 
 interface ContactProps {
 	active: string;
@@ -10,13 +10,13 @@ interface ContactProps {
 
 const Contact: React.FC<ContactProps> = ({ setRef }) => {
 	const { locale } = useRouter();
-	const t = locale === 'en' ? en : pl;
+	const t = locale === "en" ? en : pl;
 
 	const contactForm = useRef<HTMLFormElement | null>(null);
 	const [contactState, setContactState] = useState({
 		error: false,
 		success: false,
-		form: { name: '', email: '', message: '' },
+		form: { name: "", email: "", message: "" },
 	});
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -26,21 +26,29 @@ const Contact: React.FC<ContactProps> = ({ setRef }) => {
 			publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY;
 
 		if (!contactForm || !serviceId || !templateId || !publicKey) {
-			setContactState({ ...contactState, error: true });
+			setContactState({ ...contactState, error: true, success: false });
 			return;
 		}
-		emailjs.sendForm(serviceId, templateId, contactForm.current as HTMLFormElement, publicKey).then(
-			(res) => {
-				setContactState({
-					...contactState,
-					success: true,
-					form: { name: '', email: '', message: '' },
-				});
-			},
-			(err) => {
-				setContactState({ ...contactState, error: true });
-			}
-		);
+		emailjs
+			.sendForm(
+				serviceId,
+				templateId,
+				contactForm.current as HTMLFormElement,
+				publicKey
+			)
+			.then(
+				(res) => {
+					setContactState({
+						...contactState,
+						success: true,
+						error: false,
+						form: { name: "", email: "", message: "" },
+					});
+				},
+				(err) => {
+					setContactState({ ...contactState, error: true, success: false });
+				}
+			);
 	};
 
 	return (
@@ -50,7 +58,9 @@ const Contact: React.FC<ContactProps> = ({ setRef }) => {
 			className="md:py-4 py-2 dark:bg-zinc-800 bg-zinc-200"
 		>
 			<div className="container mx-auto 2xl:px-96 xl:px-64 lg:px-24 md:px-8 p-4">
-				<div className="lg:text-5xl font-bold text-3xl mb-2">{t.sections.contact.title}</div>
+				<div className="lg:text-5xl font-bold text-3xl mb-2">
+					{t.sections.contact.title}
+				</div>
 				<form
 					ref={contactForm}
 					className="flex justify-center flex-col gap-4"
@@ -108,18 +118,24 @@ const Contact: React.FC<ContactProps> = ({ setRef }) => {
 						<div
 							className={`px-4 py-2 rounded shadow font-medium text-center ${
 								contactState.error
-									? 'block cursor-pointer bg-red-400 mobileHover:hover:bg-red-500'
-									: ''
+									? "block cursor-pointer bg-red-400 mobileHover:hover:bg-red-500"
+									: ""
 							} ${
 								contactState.success
-									? 'block cursor-pointer bg-green-500 mobileHover:hover:bg-green-600'
-									: ''
+									? "block cursor-pointer bg-green-500 mobileHover:hover:bg-green-600"
+									: ""
 							} ${
 								!contactState.error && !contactState.success
-									? 'opacity-0 md:block hidden cursor-auto select-none'
-									: ''
+									? "opacity-0 md:block hidden cursor-auto select-none"
+									: ""
 							}`}
-							onClick={() => setContactState({ ...contactState, error: false, success: false })}
+							onClick={() =>
+								setContactState({
+									...contactState,
+									error: false,
+									success: false,
+								})
+							}
 						>
 							{contactState.error && t.sections.contact.error}
 							{contactState.success && t.sections.contact.success}
