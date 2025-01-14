@@ -50,8 +50,8 @@ export type TypeUnion =
 
 export const technologyCategories: TypeUnion[] = [
 	"programming languages",
-	"styling",
 	"js ecosystem",
+	"styling",
 	"databases",
 	"other",
 ];
