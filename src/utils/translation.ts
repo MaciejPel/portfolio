@@ -30,7 +30,7 @@ export const pl = {
 			description: `Cześć, nazywam się Maciej Pełczyński. Mam ${age} lat i specjalizuję się w programowaniu stron internetowych, preferując Frontend. Jednak w swoich projektach często zajmowałem się bezpieczeństwem użytkowników i integralnością danych, co skłoniło mnie do pracy również nad Backendem. W grudniu 2024 roku ukończyłem studia informatyczne na Politechnice Poznańskiej. W wolnym czasie poznaję nowe technologie oraz amatorsko zajmuję się obróbką zdjęć i filmów. Obecnie szczególnie interesuję się językami Go i Zig. Poniżej więcej szczegółów na temat używanych przeze mnie technologii i mojego doświadczenia.`,
 		},
 		technologies: {
-			description: "Technologie, z kórych korzystam na co dzień",
+			description: "Technologie, z którymi pracuję",
 			"programming languages": "języki programowania",
 			styling: "style",
 			"js ecosystem": "ekosystem js",
