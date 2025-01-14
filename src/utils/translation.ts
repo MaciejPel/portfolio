@@ -132,11 +132,11 @@ export const en = {
 			storageBoxDescription:
 				"A social media like app for uploading, compressing, grouping and tagging media. User can browse through objects, single media, tags, other users, and like media as well. I've used BunnyCDN for media storage.",
 			caseValueDescription:
-				"Aplikacja przeznaczona do śledzenia wartości skrzynek Counter-Strike, z ręcznymi aktualizacjami cen i walut co 2 godziny. Zapewnia przybliżone wartości i pozwala użytkownikom odświeżać informacje o ekwipunku i profilu w celu uzyskania najnowszych informacji.",
+				"An app designed to track the value of Counter-Strike cases, with manual price and currency updates every 2 hours. It provides approximate values and allows users to refresh their inventory and profile information for the latest insights.",
 			expensestrackerDescription:
-				"Prosta aplikacja do śledzenia wydatków. Rejestruje i kategoryzuje wydatki, pomagając w zarządzaniu budżetem. Dynamicznie generuje podział kolejno na lata i miesiące.",
+				"A simple app for tracking expenses. Stores and categorises expenses to help you manage your budget. Dynamically generates a breakdown sequentially by year and month.",
 			iotssDescription:
-				"Praca inżynierska obejmująca system oparty na Raspberry Pi z obsługą różnych czujników i kamer. Umożliwia konfigurowanie urządzeń do wykonywania cyklicznych pomiarów, przesyłania strumieniowego wideo na żywo za pomocą WebRTC i wysyłania powiadomień web push, oferując wszechstronne i konfigurowalne rozwiązanie.",
+				"Engineer's thesesis involving a Raspberry Pi-based system with support for various sensors and cameras. It enables configurable devices to perform cyclic measurements, stream live video via WebRTC, and send web push notifications, offering a versatile and customizable solution.",
 		},
 		"mile-steps": {
 			beginning: {
