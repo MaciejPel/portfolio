@@ -8,6 +8,7 @@ import project0 from "../../../public/images/project0.jpeg";
 import project1 from "../../../public/images/project1.jpeg";
 import project2 from "../../../public/images/project2.jpeg";
 import project3 from "../../../public/images/project3.jpeg";
+import project4 from "../../../public/images/project4.jpeg";
 
 interface ProjectsProps {
 	active: string;
@@ -54,9 +55,19 @@ const Projects: React.FC<ProjectsProps> = ({ active, setRef }) => {
 						reversed={true}
 					/>
 					<ProjectCard
+						title="iotss"
+						description={t.sections.projects.iotssDescription}
+						image={project2}
+						badges={Object.values(technologies)
+							.filter((item) => item.usage.includes("iotss"))
+							.map((item, index) => (
+								<Badge key={index} title={item.name} icon={item.img} />
+							))}
+					/>
+					<ProjectCard
 						title="case value"
 						description={t.sections.projects.caseValueDescription}
-						image={project2}
+						image={project3}
 						url="https://case-value.vercel.app"
 						git="https://github.com/MaciejPel/case-value"
 						badges={Object.values(technologies)
@@ -64,11 +75,12 @@ const Projects: React.FC<ProjectsProps> = ({ active, setRef }) => {
 							.map((item, index) => (
 								<Badge key={index} title={item.name} icon={item.img} />
 							))}
+						reversed={true}
 					/>
 					<ProjectCard
 						title="expenses tracker"
-						description={t.sections.projects.caseValueDescription}
-						image={project3}
+						description={t.sections.projects.expensestrackerDescription}
+						image={project4}
 						url="https://expenses-tracker-hjps.onrender.com"
 						git="https://github.com/MaciejPel/expenses-tracker"
 						badges={Object.values(technologies)
@@ -76,7 +88,6 @@ const Projects: React.FC<ProjectsProps> = ({ active, setRef }) => {
 							.map((item, index) => (
 								<Badge key={index} title={item.name} icon={item.img} />
 							))}
-						reversed={true}
 					/>
 				</div>
 			</div>

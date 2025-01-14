@@ -7,8 +7,8 @@ interface ProjectCardProps {
 	title: string;
 	description: string;
 	image: StaticImageData;
-	url: string;
-	git: string;
+	url?: string;
+	git?: string;
 	badges: React.ReactNode;
 	reversed?: boolean;
 }
@@ -77,24 +77,32 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 						reversed ? "lg:justify-start" : "lg:justify-end"
 					}`}
 				>
-					<a
-						href={git}
-						target="_blank"
-						rel="noreferrer"
-						className="rounded-lg dark:mobileHover:hover:bg-blue-600 mobileHover:hover:bg-amber-400 transition-colors p-2"
-						aria-label="Github"
-					>
-						<GithubIcon className="w-6 h-6 fill-black dark:fill-white" />
-					</a>
-					<a
-						href={url}
-						target="_blank"
-						rel="noreferrer"
-						className="rounded-lg dark:mobileHover:hover:bg-blue-600 mobileHover:hover:bg-amber-400 transition-colors p-2"
-						aria-label={title}
-					>
-						<ArrowTopRightOnSquareIcon className="w-6 h-6" />
-					</a>
+					{git ? (
+						<a
+							href={git}
+							target="_blank"
+							rel="noreferrer"
+							className="rounded-lg dark:mobileHover:hover:bg-blue-600 mobileHover:hover:bg-amber-400 transition-colors p-2"
+							aria-label="Github"
+						>
+							<GithubIcon className="w-6 h-6 fill-black dark:fill-white" />
+						</a>
+					) : (
+						""
+					)}
+					{url ? (
+						<a
+							href={url}
+							target="_blank"
+							rel="noreferrer"
+							className="rounded-lg dark:mobileHover:hover:bg-blue-600 mobileHover:hover:bg-amber-400 transition-colors p-2"
+							aria-label={title}
+						>
+							<ArrowTopRightOnSquareIcon className="w-6 h-6" />
+						</a>
+					) : (
+						""
+					)}
 				</div>
 			</div>
 			<a

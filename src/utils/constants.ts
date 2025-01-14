@@ -36,6 +36,7 @@ export interface TechnologiesInterface {
 		| "technologies"
 		| "spotter"
 		| "storagebox"
+		| "iotss"
 		| "expensestracker"
 		| "casevalue"
 	)[];
@@ -99,13 +100,13 @@ export const technologies: { [key: string]: TechnologiesInterface } = {
 		name: "Svelte/SvelteKit",
 		img: svelteLogo,
 		type: ["js ecosystem"],
-		usage: ["technologies", "casevalue", "expensestracker"],
+		usage: ["technologies", "casevalue", "expensestracker", "iotss"],
 	},
 	nodejs: {
 		name: "NodeJS",
 		img: nodeLogo,
 		type: ["js ecosystem"],
-		usage: ["technologies", "spotter", "storagebox"],
+		usage: ["technologies", "spotter", "storagebox", "iotss"],
 	},
 	ts: {
 		name: "TypeScript",
@@ -117,6 +118,7 @@ export const technologies: { [key: string]: TechnologiesInterface } = {
 			"casevalue",
 			"storagebox",
 			"expensestracker",
+			"iotss",
 		],
 	},
 	express: {
@@ -129,7 +131,13 @@ export const technologies: { [key: string]: TechnologiesInterface } = {
 		name: "Tailwind",
 		img: tailwindLogo,
 		type: ["styling"],
-		usage: ["technologies", "storagebox", "casevalue", "expensestracker"],
+		usage: [
+			"technologies",
+			"storagebox",
+			"casevalue",
+			"expensestracker",
+			"iotss",
+		],
 	},
 	sass: {
 		name: "Sass",
@@ -165,7 +173,7 @@ export const technologies: { [key: string]: TechnologiesInterface } = {
 		name: "Drizzle",
 		img: drizzleLogo,
 		type: ["databases", "js ecosystem"],
-		usage: ["technologies", "expensestracker", "casevalue"],
+		usage: ["technologies", "expensestracker", "casevalue", "iotss"],
 	},
 	prisma: {
 		name: "Prisma",
@@ -177,13 +185,13 @@ export const technologies: { [key: string]: TechnologiesInterface } = {
 		name: "Playwright",
 		img: playwrightLogo,
 		type: ["js ecosystem"],
-		usage: ["technologies"],
+		usage: ["technologies", "iotss"],
 	},
 	python: {
 		name: "Python",
 		img: pythonLogo,
 		type: ["programming languages"],
-		usage: ["technologies"],
+		usage: ["technologies", "iotss"],
 	},
 	go: {
 		name: "Go",
@@ -220,7 +228,7 @@ export const technologies: { [key: string]: TechnologiesInterface } = {
 		name: "Vite",
 		img: viteLogo,
 		type: ["js ecosystem"],
-		usage: ["casevalue", "expensestracker", "technologies"],
+		usage: ["casevalue", "expensestracker", "technologies", "iotss"],
 	},
 	webpack: {
 		name: "Webpack",
