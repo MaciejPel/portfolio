@@ -1,183 +1,187 @@
-import plFlag from '../../public/flags/pl.svg';
-import usFlag from '../../public/flags/us.svg';
+import plFlag from "../../public/flags/pl.svg";
+import usFlag from "../../public/flags/us.svg";
 
 const age = new Date().getFullYear() - 2000;
 
 export const pl = {
-	title: 'Witaj w Next.js!',
 	menu: {
-		home: 'Start',
-		about: 'O mnie',
-		technologies: 'Technologie',
-		projects: 'Projekty',
-		'mile-steps': 'Moja droga',
-		contact: 'Dzięki za przewinięcie!',
+		home: "Start",
+		about: "O mnie",
+		technologies: "Technologie",
+		projects: "Projekty",
+		"mile-steps": "Moja droga",
+		contact: "Dzięki za przewinięcie!",
 	},
 	themes: {
-		system: 'System',
-		light: 'Jasny',
-		dark: 'Ciemny',
+		system: "System",
+		light: "Jasny",
+		dark: "Ciemny",
 	},
 	sections: {
 		home: {
-			welcome: 'Cześć, jestem',
-			developer: 'Frontend Developer',
-			enthusiast: 'Entuzjasta Internetu',
-			enjoyer: 'Miłośnik technologii',
-			github: 'Mój GitHub',
+			welcome: "Cześć, jestem",
+			developer: "Frontend Developer",
+			enthusiast: "Entuzjasta Internetu",
+			enjoyer: "Miłośnik technologii",
+			github: "Mój GitHub",
 		},
 		about: {
-			title: 'O mnie',
-			description: `Cześć, nazywam się Maciej Pełczyński. Mam ${age} lata i zajmuję się programowaniem stron- preferuję Frontend, choć w moich projektach niejednokrotnie musiałem zadbać o bezpieczeństwo użytkownika i intergralność danych, dlatego czasami wskakuję też na Backend. Jestem absolwentem technikum informatycznego, a aktualnie studiuję informatykę na Politechnice Poznańskiej. W wolnym czasie poznaję nowe technologie i amatorsko zajmuję się obróbką zdjęć i filmów. Poniżej możesz znaleźć więcej informacji o używanych technologiach oraz doświadczeniu.`,
+			title: "O mnie",
+			description: `Cześć, nazywam się Maciej Pełczyński. Mam ${age} lat i specjalizuję się w programowaniu stron internetowych, preferując Frontend. Jednak w swoich projektach często zajmowałem się bezpieczeństwem użytkowników i integralnością danych, co skłoniło mnie do pracy również nad Backendem. W grudniu 2024 roku ukończyłem studia informatyczne na Politechnice Poznańskiej. W wolnym czasie poznaję nowe technologie oraz amatorsko zajmuję się obróbką zdjęć i filmów. Obecnie szczególnie interesuję się językami Go i Zig. Poniżej więcej szczegółów na temat używanych przeze mnie technologii i mojego doświadczenia.`,
 		},
 		technologies: {
-			description: 'Technologie, z kórych korzystam na co dzień',
-			'programming languages': 'języki programowania',
-			styling: 'style',
-			databases: 'bazy danych',
-			frontend: 'frontend',
-			backend: 'backend',
-			other: 'inne',
+			description: "Technologie, z kórych korzystam na co dzień",
+			"programming languages": "języki programowania",
+			styling: "style",
+			"js ecosystem": "ekosystem js",
+			databases: "bazy danych",
+			other: "inne",
 		},
 		projects: {
-			description: 'Kilka projektów, które zrealizowałem',
+			description: "Kilka projektów, które zrealizowałem",
 			spotterDescription:
-				'Aplikacja do wizualizacji spersonalizowanych danych Spotify. Zobacz swoje najlepsze utwory, artystów i gatunki w różnych przedziałach czasowych. Kolory tła zmieniają się w zależności od aktualnie odtwarzanej okładki albumu.',
+				"Aplikacja do wizualizacji spersonalizowanych danych Spotify. Zobacz swoje najlepsze utwory, artystów i gatunki w różnych przedziałach czasowych. Kolory tła zmieniają się w zależności od aktualnie odtwarzanej okładki albumu.",
 			storageBoxDescription:
 				"Aplikacja przypominająca media społecznościowe, służąca do przesyłania, kompresji, grupowania i tagowania mediów. Użytkownik może przeglądać obiekty, media, tagi i innych użytkowników oraz like'ować media. Do magazynowania użyłem BunnyCDN.",
+			caseValueDescription:
+				"An app designed to track the value of Counter-Strike cases, with manual price and currency updates every 2 hours. It provides approximate values and allows users to refresh their inventory and profile information for the latest insights.",
+			expensestrackerDescription:
+				"A simple app for tracking expenses. Records and categorises expenses to help you manage your budget.",
 		},
-		'mile-steps': {
+		"mile-steps": {
 			beginning: {
-				year: '2018',
-				title: 'Jakoś trzeba zacząć',
+				year: "2018",
+				title: "Od czegoś trzeba zacząć",
 				description:
-					'Mój pierwszy samodzielnie napisany plik HTML! Niedługo potem nauczyłem się także CSS, vanilla JS i PHP.',
+					"Mój pierwszy samodzielnie napisany plik HTML! Niedługo potem uczyłem się także CSS, vanilla JS i PHP.",
 			},
 			birrt: {
-				year: '2020',
-				title: 'Birrt',
+				year: "2020/2021",
+				title: "Birrt",
 				description:
-					'Projektowanie CRM z użyciem PHP i MySql, naprawianie istniejących problemów, tworzenie raportów i monitorowanie infrastrktury.',
+					"Projektowanie CRM z użyciem PHP i MySql, naprawianie istniejących problemów, tworzenie raportów i monitorowanie infrastrktury.",
 			},
 			br: {
-				year: '2021',
-				title: 'Best-Review',
+				year: "2021",
+				title: "Best-Review",
 				description:
-					'Projektowanie szablonów i stron z wykorzystaniem Wordpress, PHP, React. Zarządzanie bazami danych. Modyfikowanie interakcji użytkownika z systemami płatności.',
+					"Projektowanie szablonów i stron z wykorzystaniem Wordpress, PHP, React. Zarządzanie bazami danych. Modyfikowanie interakcji użytkownika z systemami płatności.",
 			},
-			solo: {
-				year: '2022',
-				title: 'Realizacja własnych pomysłów',
+			walksee: {
+				year: "2022 - obecnie",
+				title: "Walksee",
 				description:
-					'Skupiam się na programowaniu aplikacji, które chodziły mi po głowie od dłużeszego czasu. Rezultat możesz sprawdzić powyżej.',
+					"Ulepszanie istniejącej architektury i rozwój technologii zdjęć sferycznych. Obsługa klientów w zakresie stron internetowych i systemów informatycznych.",
 			},
-			all: 'To na tyle',
-			thanks: 'Dzięki za scrollowanie',
+			all: "To na tyle",
+			thanks: "Dzięki za scrollowanie",
 		},
 		contact: {
-			title: 'Kontakt',
-			name: 'Imię',
-			email: 'Adres email',
-			message: 'Wiadomość',
-			error: '😱 Coś poszło nie tak',
-			success: '😍 Wiadomość dostarczona',
-			submit: 'Wyślij',
+			title: "Kontakt",
+			name: "Imię",
+			email: "Adres email",
+			message: "Wiadomość",
+			error: "😱 Coś poszło nie tak",
+			success: "😍 Wiadomość dostarczona",
+			submit: "Wyślij",
 		},
 	},
-	copyright: 'Wszystkie prawa zastrzeżone.',
+	copyright: "Wszystkie prawa zastrzeżone.",
 };
 
 export const en = {
-	title: 'Welcome to Next.js!',
 	menu: {
-		home: 'Home',
-		about: 'About',
-		technologies: 'Technologies',
-		projects: 'Projects',
-		'mile-steps': 'Mile steps',
-		contact: 'Thanks for scrolling!',
+		home: "Home",
+		about: "About",
+		technologies: "Technologies",
+		projects: "Projects",
+		"mile-steps": "Mile steps",
+		contact: "Thanks for scrolling!",
 	},
 	themes: {
-		system: 'System',
-		light: 'Light',
-		dark: 'Dark',
+		system: "System",
+		light: "Light",
+		dark: "Dark",
 	},
 	sections: {
 		home: {
-			welcome: 'Hi, my name is',
-			developer: 'Frontend Developer',
-			enthusiast: 'Web Enthusiast',
-			enjoyer: 'Technology Enjoyer',
-			github: 'My GitHub',
+			welcome: "Hi, my name is",
+			developer: "Frontend Developer",
+			enthusiast: "Web Enthusiast",
+			enjoyer: "Technology Enjoyer",
+			github: "My GitHub",
 		},
 		about: {
-			title: 'About me',
-			description: `Hi, my name is Maciej Pełczyński. I am ${age} years old, and I am dealing with programming pages- I prefer Frontend, however in my projects I've had to take care of user security and data integrity on multiple occasions, so I jump on the Backend from time to time. I am a graduate of an IT technical school, and I am currently studying computer science at the Poznan University of Technology. In my spare time, I learn about new technologies and do amateur photo and video processing. Below you can find more about the used technologies and experience.`,
+			title: "About me",
+			description: `Hi, my name is Maciej Pełczyński. I am ${age} years old and specialize in programming web pages, with a preference for Frontend development. However, in my projects, I have often handled user security and data integrity, which has led me to work on the Backend as well. I have completed my computer science studies at the Poznan University of Technology in December 2024. In my spare time, I explore new technologies and enjoy amateur photo and video processing. Currently, I am particularly interested in Go and Zig. Below, you can find more details about the technologies I use and my experience.`,
 		},
 		technologies: {
-			description: "Technologies I'm comfortable to work with",
-			'programming languages': 'programming languages',
-			styling: 'styling',
-			databases: 'databases',
-			frontend: 'frontend',
-			backend: 'backend',
-			other: 'other',
+			description: "Technologies I'm comfortable working with",
+			"programming languages": "programming languages",
+			styling: "styling",
+			"js ecosystem": "js ecosystem",
+			databases: "databases",
+			other: "other",
 		},
 		projects: {
-			description: 'Some of my projects',
+			description: "Some of my personal projects",
 			spotterDescription:
-				'A web app for visualizing personalized Spotify data. View your top tracks, artists and genres in different time spans. Background colors change depending on currently played album cover.',
+				"A web app for visualizing personalized Spotify data. View your top tracks, artists and genres in different time spans. Background colors change depending on currently played album cover.",
 			storageBoxDescription:
 				"A social media like app for uploading, compressing, grouping and tagging media. User can browse through objects, single media, tags, other users, and like media as well. I've used BunnyCDN for media storage.",
+			caseValueDescription:
+				"Aplikacja przeznaczona do śledzenia wartości skrzynek Counter-Strike, z ręcznymi aktualizacjami cen i walut co 2 godziny. Zapewnia przybliżone wartości i pozwala użytkownikom odświeżać informacje o ekwipunku i profilu w celu uzyskania najnowszych informacji.",
+			expensestrackerDescription:
+				"Prosta aplikacja do śledzenia wydatków. Rejestruje i kategoryzuje wydatki, pomagając w zarządzaniu budżetem.",
 		},
-		'mile-steps': {
+		"mile-steps": {
 			beginning: {
-				year: '2018',
-				title: 'You gotta start somehow',
+				year: "2018",
+				title: "You gotta start somewhere",
 				description:
-					"My very first self-made HTML file! I've also learned CSS, vanilla JS and PHP shortly after.",
+					"My very first self-made HTML file! I've also learned about CSS, vanilla JS and PHP shortly after.",
 			},
 			birrt: {
-				year: '2020',
-				title: 'Birrt',
+				year: "2020",
+				title: "Birrt",
 				description:
-					'Design of CRM systems using PHP and MySql. Fixing existing bugs, reporting progress and monitoring infrastructure.',
+					"Design of CRM systems using PHP and MySql. Fixing existing bugs, reporting progress and monitoring infrastructure.",
 			},
 			br: {
-				year: '2021',
-				title: 'Best-Review',
+				year: "2021",
+				title: "Best-Review",
 				description:
-					'Template and page design using Wordpress, PHP, React. Databases management. Modifying user interaction with payment systems.',
+					"Template and page design using Wordpress, PHP, React. Databases management. Modifying user interaction with payment systems.",
 			},
-			solo: {
-				year: '2022',
-				title: 'Finishing my own projects',
+			walksee: {
+				year: "2022 - now",
+				title: "Walksee",
 				description:
-					'Focusing on ideas that I had in my mind for a long time. You could see results above.',
+					"Further enhancement of existing architecture and development of spherical photos technologies. Satysfying clients with websites and information systems.",
 			},
-			all: 'That would be all',
-			thanks: 'Thanks for scrolling',
+			all: "That would be all",
+			thanks: "Thanks for scrolling",
 		},
 		contact: {
-			title: 'Contact',
-			name: 'Name',
-			email: 'Email',
-			message: 'Message',
-			submit: 'Submit',
-			error: '😱 Something went wrong',
-			success: '😍 Message has been delivered',
-			contact: 'Thanks for scrolling!',
+			title: "Contact",
+			name: "Name",
+			email: "Email",
+			message: "Message",
+			submit: "Submit",
+			error: "😱 Something went wrong",
+			success: "😍 Message has been delivered",
+			contact: "Thanks for scrolling!",
 		},
 	},
-	copyright: 'All rights reserved.',
+	copyright: "All rights reserved.",
 };
 
 export const languageOptions = {
-	pl: 'pl',
-	en: 'us',
+	pl: "pl",
+	en: "us",
 	flags: { pl: plFlag, en: usFlag },
 	abbreviations: {
-		en: 'English',
-		pl: 'Polski',
+		en: "English",
+		pl: "Polski",
 	},
 };

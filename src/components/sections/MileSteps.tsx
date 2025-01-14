@@ -14,7 +14,7 @@ const MileSteps: React.FC<MileStepsProps> = ({ active, setRef }) => {
 	const t = locale === "en" ? en : pl;
 	const { ref, inView } = useInView({ threshold: 0.85 });
 
-	const { beginning, birrt, br, solo } = t.sections["mile-steps"];
+	const { beginning, birrt, br, walksee } = t.sections["mile-steps"];
 	const steps = [
 		{
 			id: 1,
@@ -39,9 +39,9 @@ const MileSteps: React.FC<MileStepsProps> = ({ active, setRef }) => {
 		null,
 		{
 			id: 4,
-			year: solo.year,
-			title: solo.title,
-			description: solo.description,
+			year: walksee.year,
+			title: walksee.title,
+			description: walksee.description,
 		},
 	];
 

@@ -39,13 +39,13 @@ const Technologies: React.FC<TechnologiesProps> = ({ active, setRef }) => {
 	const lines = [
 		{
 			img: line1,
-			css: `top-[77%] left-[-3%] ${
+			css: `-bottom-[5%] left-[-3%] ${
 				inView ? "lg:animate-fadeInLeft" : "lg:-translate-x-[20%] lg:opacity-0"
 			}`,
 		},
 		{
 			img: line2,
-			css: `top-[-5%] right-[-3%] ${
+			css: `-top-[5%] right-[-3%] ${
 				inView ? "lg:animate-fadeInRight" : "lg:translate-x-[20%] lg:opacity-0"
 			}`,
 		},
@@ -65,7 +65,7 @@ const Technologies: React.FC<TechnologiesProps> = ({ active, setRef }) => {
 				ref={ref}
 				className="container mx-auto md:px-8 px-4 flex flex-col lg:gap-12 md:gap-4 gap-2 justify-center items-center md:py-12 py-8 md:mt-0 mt-8"
 			>
-				<div className="text-center relative">
+				<div className="text-center relative flex flex-col gap-2">
 					<div className="md:text-5xl text-3xl font-bold">
 						{t.menu.technologies}
 					</div>
