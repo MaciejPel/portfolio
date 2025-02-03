@@ -27,7 +27,7 @@ export const pl = {
 		},
 		about: {
 			title: "O mnie",
-			description: `Cześć, nazywam się Maciej Pełczyński. Mam ${age} lat i specjalizuję się w programowaniu stron internetowych, preferując Frontend. Jednak w swoich projektach często zajmowałem się bezpieczeństwem użytkowników i integralnością danych, co skłoniło mnie do pracy również nad Backendem. W grudniu 2024 roku ukończyłem studia informatyczne na Politechnice Poznańskiej. W wolnym czasie poznaję nowe technologie oraz amatorsko zajmuję się obróbką zdjęć i filmów. Obecnie szczególnie interesuję się językami Go i Zig. Poniżej więcej szczegółów na temat używanych przeze mnie technologii i mojego doświadczenia.`,
+			description: `Cześć, nazywam się Maciej Pełczyński. Mam ${age} lat i specjalizuję się w programowaniu stron internetowych, preferując Frontend. Jednak w swoich projektach często zajmowałem się bezpieczeństwem użytkowników i integralnością danych, co skłoniło mnie do pracy również nad Backendem. W grudniu 2024 roku ukończyłem studia informatyczne na Politechnice Poznańskiej. W wolnym czasie poznaję nowe technologie oraz amatorsko zajmuję się obróbką zdjęć i filmów. Obecnie szczególnie interesuję się Go. Poniżej więcej szczegółów na temat używanych przeze mnie technologii i mojego doświadczenia.`,
 		},
 		technologies: {
 			description: "Technologie, z którymi pracuję",
@@ -115,7 +115,7 @@ export const en = {
 		},
 		about: {
 			title: "About me",
-			description: `Hi, my name is Maciej Pełczyński. I am ${age} years old and specialize in programming web pages, with a preference for Frontend development. However, in my projects, I have often handled user security and data integrity, which has led me to work on the Backend as well. I have completed my computer science studies at the Poznan University of Technology in December 2024. In my spare time, I explore new technologies and enjoy amateur photo and video processing. Currently, I am particularly interested in Go and Zig. Below, you can find more details about the technologies I use and my experience.`,
+			description: `Hi, my name is Maciej Pełczyński. I am ${age} years old and specialize in programming web pages, with a preference for Frontend development. However, in my projects, I have often handled user security and data integrity, which has led me to work on the Backend as well. I have completed my computer science studies at the Poznan University of Technology in December 2024. In my spare time, I explore new technologies and enjoy amateur photo and video processing. Currently, I am particularly interested in Go. Below, you can find more details about the technologies I use and my experience.`,
 		},
 		technologies: {
 			description: "Technologies I'm comfortable working with",
