@@ -3,7 +3,7 @@
   <h1 align="center">Personal portfolio</h1>
 </div>
 <p align="center">
-  This project is my first personal portoflio. It is available at <a href="https://maciej.vercel.app" target="_blank">maciej.vercel.app</a>.
+  This project is my first personal portoflio. It is available at <a href="https://maciejpel.vercel.app" target="_blank">maciejpel.vercel.app</a>.
 </p>
 <div align="center">
   <img src="https://user-images.githubusercontent.com/67285453/234613399-ff67fa4f-dcbc-48ee-a015-e83ce1f89f5c.png" alt="main"/>
@@ -39,4 +39,3 @@ npm run start
 - React (Next.JS framework)
 - Tailwind CSS
 - AutoAnimate library
-

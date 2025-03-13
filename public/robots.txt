@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: http://maciej.vercel.app
+Host: http://maciejpel.vercel.app
 
 # Sitemaps
-Sitemap: http://maciej.vercel.app/sitemap.xml
+Sitemap: http://maciejpel.vercel.app/sitemap.xml
